@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Staff Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Staff Added</h1>
+    <p th:text="'Eid: ' + ${staff.eid}" />
+    <p th:text="'First Name: ' + ${staff.firstName}" />
+    <p th:text="'Last Name: ' + ${staff.lastName}" />
+    <p th:text="'Date of Birth: ' + ${staff.date_of_birth}" />
+    <p th:text="'Salary: ' + ${staff.salary}" />
+    <p th:text="'Department ID: ' + ${staff.departmentId}" />
+    <p th:text="'Office Number: ' + ${staff.officeNo}" />
+    <p th:text="'Job Title: ' + ${staff.jobTitle}" />
+    <p th:text="'Gender: ' + ${staff.gender}" />
+    <p th:text="'Contact Number: ' + ${staff.contactNumber}" />
+    <a href="/addStaff">Add another staff</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>

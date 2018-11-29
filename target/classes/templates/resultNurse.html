@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nurse Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Nurse Added</h1>
+    <p th:text="'Nid: ' + ${nurse.nid}" />
+    <p th:text="'First Name: ' + ${nurse.firstName}" />
+    <p th:text="'Last Name: ' + ${nurse.lastName}" />
+    <p th:text="'Date of Birth: ' + ${nurse.date_of_birth}" />
+    <p th:text="'Department ID: ' + ${nurse.departmentId}" />
+    <p th:text="'Room Number: ' + ${nurse.roomNo}" />
+    <a href="/addNurse">Add another nurse</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>

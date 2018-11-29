@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add A Doctor Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Add A Doctor Record</h1>
+    <form action="#" th:action="@{/addNurse}" th:object="${nurse}" method="post">
+        <p>Nid: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{nid}" /></p>
+    	<p>First Name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+        <p>Date of Birth: <input id="datePickerId" type="date" name="dob" th:field="*{date_of_birth}" required> </p>
+        <p>Department ID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{departmentId}" /></p>
+        <p>Room Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{roomNo}" /></p>
+	<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<script>
+datePickerId.max = new Date().toISOString().split("T")[0];
+</script>
+</body>
+</html>

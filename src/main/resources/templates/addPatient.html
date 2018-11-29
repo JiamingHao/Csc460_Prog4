@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add A Patient Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1>Add a patient record</h1>
+    <form action="#" th:action="@{/addPatient}" th:object="${patient}" method="post">
+        <p>Pid: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{pid}" /></p>
+    	<p>First Name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+        <p>Date of Birth: <input id="datePickerId" type="date" name="dob" required th:field="*{date_of_birth}"> </p>
+        <p>Address: <input type="text" th:field="*{address}" /></p>
+        <p>Contact Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{contactNumber}" /></p>
+        <fieldset style="margin-left: -15px;">
+ 			<legend>Gender</legend>
+ 			<input id="1" type="radio" name="gender" value="Male" th:field="*{gender}"> Male<br> 
+ 			<input id="2" type="radio" name="gender" value="Female" th:field="*{gender}"> Female<br>
+ 			<input id="3" type="radio" name="gender" value="Others" th:field="*{gender}"> Others<br>
+ 	</fieldset>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<script>
+datePickerId.max = new Date().toISOString().split("T")[0];
+</script>
+</body>
+</html>
