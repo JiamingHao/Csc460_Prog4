@@ -63,7 +63,6 @@ public class Doctor {
 	{
 		return departmentId;
 	}
-	
 
 	public void setDepartmentId(long departmentId)
 	{

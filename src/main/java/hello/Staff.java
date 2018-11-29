@@ -7,10 +7,10 @@ public class Staff {
 	private String date_of_birth;
 	private long departmentId;
 	private int officeNo;
-        private int salary;
+	private int salary;
 	private String jobTitle;
-        private String gender;
-        private int contactNumber;
+	private String gender;
+	private int contactNumber;
 	
 	public long getEid()
 	{
@@ -51,7 +51,6 @@ public class Staff {
 	{
 		this.date_of_birth = date_of_birth;
 	}
-	
 	
 	public long getDepartmentId()
 	{
