@@ -1,8 +1,1 @@
-#Ignore all DS_Store files
-*.DS_Store
-
-#Ignore all xml files
-*.xml
-
-#Ignore all iml files
-*.iml
+.DS_Store
