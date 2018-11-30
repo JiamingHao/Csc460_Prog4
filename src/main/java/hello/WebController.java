@@ -99,7 +99,7 @@ public class WebController {
 
     @GetMapping("/updateDoctor")
     public String updateDoctorForm(Model model) {
-        model.addAttribute("Doctor", new Doctor());
+        model.addAttribute("doctor", new Doctor());
         return "updateDoctor";
     }
 
@@ -125,7 +125,7 @@ public class WebController {
 
     @GetMapping("/deleteNurse")
     public String deleteNurseForm(Model model) {
-        model.addAttribute("Nurse", new Nurse());
+        model.addAttribute("nurse", new Nurse());
         return "deleteNurse";
     }
 
@@ -137,7 +137,7 @@ public class WebController {
 
     @GetMapping("/updateNurse")
     public String updateNurseForm(Model model) {
-        model.addAttribute("Nurse", new Nurse());
+        model.addAttribute("nurse", new Nurse());
         return "updateNurse";
     }
 
@@ -163,7 +163,7 @@ public class WebController {
 
     @GetMapping("/deleteStaff")
     public String deleteStaffForm(Model model) {
-        model.addAttribute("Staff", new Staff());
+        model.addAttribute("staff", new Staff());
         return "deleteStaff";
     }
 
@@ -175,7 +175,7 @@ public class WebController {
 
     @GetMapping("/updateStaff")
     public String updateStaffForm(Model model) {
-        model.addAttribute("Staff", new Staff());
+        model.addAttribute("staff", new Staff());
         return "updateStaff";
     }
 
@@ -183,6 +183,42 @@ public class WebController {
     public String updateStaffSubmit(@ModelAttribute Staff staff) {
         // TODO add db query here.
         return "updateStaffResult";
+    }
+    
+    @GetMapping("/addPharmacist")
+    public String pharmacistForm(Model model){
+	model.addAttribute("pharmacist", new Pharmacist());
+	return "addPharmacist";
+    }
+
+    @PostMapping("/addPharmacist")
+    public String pharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+	// TODO add db query here.
+ 	return "resultPharmacist";
+    }
+
+    @GetMapping("/deletePharmacist")
+    public String deletePharmacistForm(Model model) {
+        model.addAttribute("pharmacist", new Pharmacist());
+        return "deletePharmacist";
+    }
+
+    @PostMapping("/deletePharmacist")
+    public String deletePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+        // TODO add db query here.
+        return "deletePharmacistResult";
+    }
+
+    @GetMapping("/updatePharmacist")
+    public String updatePharmacistForm(Model model) {
+        model.addAttribute("pharmacist", new Pharmacist());
+        return "updatePharmacist";
+    }
+
+    @PostMapping("/updatePharmacist")
+    public String updatePharmacistSubmit(@ModelAttribute Pharmacist staff) {
+        // TODO add db query here.
+        return "updatePharmacistResult";
     }
 
     /* TODO add&update patient treatment record.

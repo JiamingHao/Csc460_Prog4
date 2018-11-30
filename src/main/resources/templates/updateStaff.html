@@ -6,31 +6,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Add A Staff Record</h1>
+    <h1>Update A Staff Record</h1>
     <form action="#" th:action="@{/addStaff}" th:object="${staff}" method="post">
-        <p>Eid: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{eid}" required/></p>
+        <p>Enter the Eid of the staff you want to update: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{eid}" required/></p>
     	<p>First Name: <input type="text" th:field="*{firstName}" required/></p>
         <p>Last Name: <input type="text" th:field="*{lastName}" required/></p>
-        <p>Date of Birth: <input id="datePickerId" type="date" name="dob" th:field="*{date_of_birth}" required> </p>
-        <p>Department ID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{departmentId}" required/></p>
+        <p>Department ID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{departmentId}"/></p>
 	<p>Office Number: <input type="number" name="officeNo" min="1" max"2" th:field="*{officeNo}"></p>
         <p>Contact Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{contactNumber}" /></p>
         <p>Salary: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{salary}" /></p>
         <fieldset style="margin-left: -15px;">
- 			<legend>Gender</legend>
+ 			<legend>Select Gender Again</legend>
  			<input id="1" type="radio" name="gender" value="Male" th:field="*{gender}"> Male<br> 
  			<input id="2" type="radio" name="gender" value="Female" th:field="*{gender}"> Female<br>
  			<input id="3" type="radio" name="gender" value="Others" th:field="*{gender}"> Others<br>
  	</fieldset>
         <fieldset style="margin-left: -15px;">
- 			<legend>Job Title</legend>
+ 			<legend>Select Job Title Again</legend>
  			<input id="1" type="radio" name="jobTitle" value="Receptionist" th:field="*{jobTitle}"> Receptionist<br> 
  			<input id="2" type="radio" name="jobTitle" value="Cashier" th:field="*{jobTitle}"> Cashier<br>
  	</fieldset>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 <script>
-datePickerId.max = new Date().toISOString().split("T")[0];
 </script>
 </body>
 </html>
