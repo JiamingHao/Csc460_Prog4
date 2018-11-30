@@ -4,7 +4,8 @@
 *.xml
 *.iml
 
-# Byte-compiled files
+# Byte-compiled files:
 *.class
 
-*.lst
+createdFiles.lst
+inputFiles.lst
