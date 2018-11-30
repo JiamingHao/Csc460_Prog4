@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add A Treatment Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1>Add a treatment record</h1>
+    <form action="#" th:action="@{/addTreatmentRecord}" th:object="${treatmentRecord}" method="post">
+        <p>Aid: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{aid}" required/></p>
+        <p>Pid: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{pid}" required/></p>
+        <p>Did: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{did}" required/></p>
+    	<p>Visit Reason: <input type="text" th:field="*{visitReason}" required/></p>
+        <p>Visit Date: <input id="datePickerId" type="date" name="dob" th:field="*{visitDate}" required> </p>
+        <p>Initial Hosptialized Date: <input id="datePickerId" type="date" th:field="*{initialHospitalizedDate}" required> </p>
+        <p>Expected Discharge Date: <input id="datePickerId" type="date" th:field="*{expectedDischargeDate}" required> </p>
+        <p>Discharge Date: <input id="datePickerId" type="date" name="dob" th:field="*{dischargeDate}" required> </p>
+        <p>Hosptialized Room No: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{hospitalizedRoomNo}" required/></p>
+        <p>Treatment Method: <input type="text" th:field="*{treatmentMethod}"/></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<script>
+datePickerId.max = new Date().toISOString().split("T")[0];
+</script>
+</body>
+</html>

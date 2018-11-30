@@ -1,7 +1,7 @@
 package hello;
 
 public class CashiersData {
-	private long recordId;
+    private long recordId;
     private long pid;
     private double dueAmount;
     private String dueDate;
@@ -42,7 +42,7 @@ public class CashiersData {
         return eid;
     }
 
-    public void setEid(long did)
+    public void setEid(long eid)
     {
         this.eid = eid;
     }

@@ -231,6 +231,17 @@ public class WebController {
     */
 
 
+    @GetMapping("/addTreatmentRecord")
+    public String addTreatmentForm(Model model){
+	model.addAttribute("treatmentRecord", new TreatmentRecord());
+	return "addTreatmentRecord";
+    }
+
+    @PostMapping("/addTreatmentRecord")
+    public String treatmentSubmit(@ModelAttribute Pharmacist pharmacist) {
+	// TODO add db query here.
+ 	return "resultPharmacist";
+    }
 
     /* TODO add&update cashier record.
     When adding, only the payment date can be left as blank.
