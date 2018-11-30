@@ -87,7 +87,7 @@ public class WebController {
 
     @GetMapping("/deleteDoctor")
     public String deleteDoctorForm(Model model) {
-        model.addAttribute("Doctor", new Doctor());
+        model.addAttribute("doctor", new Doctor());
         return "deleteDoctor";
     }
 
