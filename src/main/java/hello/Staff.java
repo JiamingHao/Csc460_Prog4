@@ -17,7 +17,7 @@ public class Staff {
 		return eid;
 	}
 	
-	public void setEid(long did)
+	public void setEid(long eid)
 	{
 		this.eid = eid;
 	}

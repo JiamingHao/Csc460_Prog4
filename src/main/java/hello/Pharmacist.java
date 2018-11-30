@@ -14,7 +14,7 @@ public class Pharmacist {
 		return pharmacist_id;
 	}
 	
-	public void setDid(long pharmacist_id)
+	public void setPharmacist_id(long pharmacist_id)
 	{
 		this.pharmacist_id = pharmacist_id;
 	}

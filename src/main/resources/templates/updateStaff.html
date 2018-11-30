@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Update A Staff Record</h1>
-    <form action="#" th:action="@{/addStaff}" th:object="${staff}" method="post">
+    <form action="#" th:action="@{/updateStaff}" th:object="${staff}" method="post">
         <p>Enter the Eid of the staff you want to update: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{eid}" required/></p>
     	<p>First Name: <input type="text" th:field="*{firstName}" required/></p>
         <p>Last Name: <input type="text" th:field="*{lastName}" required/></p>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pharmacist Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Pharmacist Added</h1>
+    <p th:text="'Pharmacist ID: ' + ${pharmacist.pharmacist_id}" />
+    <p th:text="'First Name: ' + ${pharmacist.firstName}" />
+    <p th:text="'Last Name: ' + ${pharmacist.lastName}" />
+    <p th:text="'Date of Birth: ' + ${pharmacist.date_of_birth}" />
+    <p th:text="'Department ID: ' + ${pharmacist.departmentId}" />
+    <p th:text="'Office Number: ' + ${pharmacist.officeNo}" />
+    <a href="/addPharmacist">Add another pharmacist</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>

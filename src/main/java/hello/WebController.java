@@ -208,18 +208,22 @@ public class WebController {
         // TODO add db query here.
         return "deletePharmacistResult";
     }
-
+    
     @GetMapping("/updatePharmacist")
     public String updatePharmacistForm(Model model) {
         model.addAttribute("pharmacist", new Pharmacist());
         return "updatePharmacist";
     }
-
+    
     @PostMapping("/updatePharmacist")
-    public String updatePharmacistSubmit(@ModelAttribute Pharmacist staff) {
+    public String updatePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
         // TODO add db query here.
         return "updatePharmacistResult";
     }
+
+
+
+    
 
     /* TODO add&update patient treatment record.
     When adding PID, appointment number, reason of visit, and date of visit cannot be left as blank.
