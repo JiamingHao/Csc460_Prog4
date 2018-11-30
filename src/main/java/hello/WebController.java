@@ -56,6 +56,7 @@ public class WebController {
     @PostMapping("/deletePatient")
     public String deletePatientSubmit(@ModelAttribute Patient patient) {
         // TODO add db query here.
+    	jdbcTemplate.update("remove from ?.patient where pid = ?", prefix, patient.getPid());
         return "deletePatientResult";
     }
 
@@ -68,6 +69,7 @@ public class WebController {
     @PostMapping("/updatePatient")
     public String updatePatientSubmit(@ModelAttribute Patient patient) {
         // TODO add db query here.
+    	jdbcTemplate.update("update ?.patient set lastName = ?, firstName = ?, gender = ?, address = ?, contactNumber = ? where pid = ?", prefix, patient.getLastName(), patient.getFirstName(), patient.getGender(), patient.getAddress(), patient.getContactNumber(), patient.getPid());
         return "updatePatientResult";
     }
 
@@ -82,6 +84,7 @@ public class WebController {
     @PostMapping("/addDoctor")
     public String doctorSubmit(@ModelAttribute Doctor doctor) {
 	// TODO add db query here.
+    	jdbcTemplate.update("insert into ?.doctor values (?,?,?,?,?,?,?)", prefix, doctor.getDid(), doctor.getLastName(), doctor.getFirstName(), doctor.getDate_of_birth(), doctor.getStatus(), doctor.getDepartmentId(), doctor.getOfficeNo());
  	return "resultDoctor";
     }
 
@@ -94,6 +97,7 @@ public class WebController {
     @PostMapping("/deleteDoctor")
     public String deleteDoctorSubmit(@ModelAttribute Doctor doctor) {
         // TODO add db query here.
+    	jdbcTemplate.update("remove from ?.doctor where did = ?", prefix, doctor.getDid());
         return "deleteDoctorResult";
     }
 
@@ -106,6 +110,7 @@ public class WebController {
     @PostMapping("/updateDoctor")
     public String updateDoctorSubmit(@ModelAttribute Doctor doctor) {
         // TODO add db query here.
+    	jdbcTemplate.update("update ?.doctor set lastName = ?, firstName = ?, status = ?, departmentId = ?, roomNo = ? where did = ?", prefix, doctor.getLastName(), doctor.getFirstName(), doctor.getStatus(), doctor.getDepartmentId(), doctor.getOfficeNo(), doctor.getDid());
         return "updateDoctorResult";
     }
 
@@ -120,6 +125,7 @@ public class WebController {
     @PostMapping("/addNurse")
     public String nurseSubmit(@ModelAttribute Nurse nurse) {
 	// TODO add db query here.
+    	jdbcTemplate.update("insert into ?.nurse values (?,?,?,?,?,?)", prefix, nurse.getNid(), nurse.getLastName(), nurse.getFirstName(), nurse.getDate_of_birth(), nurse.getDepartmentId(), nurse.getRoomNo());
  	return "resultNurse";
     }
 
@@ -132,6 +138,7 @@ public class WebController {
     @PostMapping("/deleteNurse")
     public String deleteNurseSubmit(@ModelAttribute Nurse nurse) {
         // TODO add db query here.
+    	jdbcTemplate.update("remove from ?.nurse where nid = ?", prefix, nurse.getNid());
         return "deleteNurseResult";
     }
 
