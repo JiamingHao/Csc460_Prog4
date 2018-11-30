@@ -48,25 +48,25 @@ public class WebController {
     }
 
     @GetMapping("/deletePatient")
-    public String patientForm(Model model) {
+    public String deletePatientForm(Model model) {
         model.addAttribute("patient", new Patient());
         return "deletePatient";
     }
 
     @PostMapping("/deletePatient")
-    public String patientSubmit(@ModelAttribute Patient patient) {
+    public String deletePatientSubmit(@ModelAttribute Patient patient) {
         // TODO add db query here.
         return "deletePatientResult";
     }
 
     @GetMapping("/updatePatient")
-    public String patientForm(Model model) {
+    public String updatePatientForm(Model model) {
         model.addAttribute("patient", new Patient());
         return "updatePatient";
     }
 
     @PostMapping("/updatePatient")
-    public String patientSubmit(@ModelAttribute Patient patient) {
+    public String updatePatientSubmit(@ModelAttribute Patient patient) {
         // TODO add db query here.
         return "updatePatientResult";
     }
@@ -86,25 +86,25 @@ public class WebController {
     }
 
     @GetMapping("/deleteDoctor")
-    public String DoctorForm(Model model) {
+    public String deleteDoctorForm(Model model) {
         model.addAttribute("Doctor", new Doctor());
         return "deleteDoctor";
     }
 
     @PostMapping("/deleteDoctor")
-    public String DoctorSubmit(@ModelAttribute Doctor doctor) {
+    public String deleteDoctorSubmit(@ModelAttribute Doctor doctor) {
         // TODO add db query here.
         return "deleteDoctorResult";
     }
 
     @GetMapping("/updateDoctor")
-    public String DoctorForm(Model model) {
+    public String updateDoctorForm(Model model) {
         model.addAttribute("Doctor", new Doctor());
         return "updateDoctor";
     }
 
     @PostMapping("/updateDoctor")
-    public String DoctorSubmit(@ModelAttribute Doctor doctor) {
+    public String updateDoctorSubmit(@ModelAttribute Doctor doctor) {
         // TODO add db query here.
         return "updateDoctorResult";
     }
@@ -124,25 +124,25 @@ public class WebController {
     }
 
     @GetMapping("/deleteNurse")
-    public String NurseForm(Model model) {
+    public String deleteNurseForm(Model model) {
         model.addAttribute("Nurse", new Nurse());
         return "deleteNurse";
     }
 
     @PostMapping("/deleteNurse")
-    public String NurseSubmit(@ModelAttribute Nurse nurse) {
+    public String deleteNurseSubmit(@ModelAttribute Nurse nurse) {
         // TODO add db query here.
         return "deleteNurseResult";
     }
 
     @GetMapping("/updateNurse")
-    public String NurseForm(Model model) {
+    public String updateNurseForm(Model model) {
         model.addAttribute("Nurse", new Nurse());
         return "updateNurse";
     }
 
     @PostMapping("/updateNurse")
-    public String NurseSubmit(@ModelAttribute Nurse nurse) {
+    public String updateNurseSubmit(@ModelAttribute Nurse nurse) {
         // TODO add db query here.
         return "updateNurseResult";
     }
@@ -162,25 +162,25 @@ public class WebController {
     }
 
     @GetMapping("/deleteStaff")
-    public String StaffForm(Model model) {
+    public String deleteStaffForm(Model model) {
         model.addAttribute("Staff", new Staff());
         return "deleteStaff";
     }
 
     @PostMapping("/deleteStaff")
-    public String StaffSubmit(@ModelAttribute Staff staff) {
+    public String deleteStaffSubmit(@ModelAttribute Staff staff) {
         // TODO add db query here.
         return "deleteStaffResult";
     }
 
     @GetMapping("/updateStaff")
-    public String StaffForm(Model model) {
+    public String updateStaffForm(Model model) {
         model.addAttribute("Staff", new Staff());
         return "updateStaff";
     }
 
     @PostMapping("/updateStaff")
-    public String StaffSubmit(@ModelAttribute Staff staff) {
+    public String updateStaffSubmit(@ModelAttribute Staff staff) {
         // TODO add db query here.
         return "updateStaffResult";
     }
