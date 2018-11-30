@@ -6,3 +6,5 @@
 
 # Byte-compiled files
 *.class
+
+*.lst
