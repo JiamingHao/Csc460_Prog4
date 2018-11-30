@@ -1,20 +1,20 @@
 package hello;
 
 public class Doctor {
-	private long did;
+	private int did;
 	private String lastName;
 	private String firstName;
 	private String date_of_birth;
 	private String status;
-	private long departmentId;
+	private int departmentId;
 	private int officeNo;
 	
-	public long getDid()
+	public int getDid()
 	{
 		return did;
 	}
 	
-	public void setDid(long did)
+	public void setDid(int did)
 	{
 		this.did = did;
 	}
@@ -59,12 +59,12 @@ public class Doctor {
 		this.status = status;
 	}
 	
-	public long getDepartmentId()
+	public int getDepartmentId()
 	{
 		return departmentId;
 	}
 
-	public void setDepartmentId(long departmentId)
+	public void setDepartmentId(int departmentId)
 	{
 		this.departmentId = departmentId;	
 	}

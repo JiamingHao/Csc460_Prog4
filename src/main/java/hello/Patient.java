@@ -8,7 +8,7 @@ public class Patient {
 	private String gender;
 	private String date_of_birth;
 	private String address;
-	private int contactNumber;
+	private String contactNumber;
 
 
 	public long getPid(){
@@ -68,12 +68,12 @@ public class Patient {
 		this.address = address;
 	}
 	
-	public int getContactNumber()
+	public String getContactNumber()
 	{
 		return contactNumber;
 	}
 	
-	public void setContactNumber(int contactNumber)
+	public void setContactNumber(String contactNumber)
 	{
 		this.contactNumber = contactNumber;
 	}
