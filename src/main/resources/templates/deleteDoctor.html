@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete A Doctor Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1>Delete A Doctor Record</h1>
+    <form action="#" th:action="@{/deleteDoctor}" th:object="${doctor}" method="post">
+        <p>Enter the id of the doctor you want to delete: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{did}" required/></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<script>
+</script>
+</body>
+</html>
