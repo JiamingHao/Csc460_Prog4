@@ -48,13 +48,13 @@ public class WebController {
     }
 
     @GetMapping("/deletePatient")
-    public String dePatientForm(Model model) {
+    public String deletePatientForm(Model model) {
         model.addAttribute("patient", new Patient());
         return "deletePatient";
     }
 
     @PostMapping("/deletePatient")
-    public String dePatientSubmit(@ModelAttribute Patient patient) {
+    public String deletePatientSubmit(@ModelAttribute Patient patient) {
         // TODO add db query here.
     	jdbcTemplate.update("remove from ?.patient where pid = ?", prefix, patient.getPid());
         return "deletePatientResult";
@@ -89,13 +89,13 @@ public class WebController {
     }
 
     @GetMapping("/deleteDoctor")
-    public String deDoctorForm(Model model) {
-        model.addAttribute("Doctor", new Doctor());
+    public String deleteDoctorForm(Model model) {
+        model.addAttribute("doctor", new Doctor());
         return "deleteDoctor";
     }
 
     @PostMapping("/deleteDoctor")
-    public String deDoctorSubmit(@ModelAttribute Doctor doctor) {
+    public String deleteDoctorSubmit(@ModelAttribute Doctor doctor) {
         // TODO add db query here.
     	jdbcTemplate.update("remove from ?.doctor where did = ?", prefix, doctor.getDid());
         return "deleteDoctorResult";
@@ -103,7 +103,7 @@ public class WebController {
 
     @GetMapping("/updateDoctor")
     public String updateDoctorForm(Model model) {
-        model.addAttribute("Doctor", new Doctor());
+        model.addAttribute("doctor", new Doctor());
         return "updateDoctor";
     }
 
@@ -130,13 +130,13 @@ public class WebController {
     }
 
     @GetMapping("/deleteNurse")
-    public String deNurseForm(Model model) {
-        model.addAttribute("Nurse", new Nurse());
+    public String deleteNurseForm(Model model) {
+        model.addAttribute("nurse", new Nurse());
         return "deleteNurse";
     }
 
     @PostMapping("/deleteNurse")
-    public String deNurseSubmit(@ModelAttribute Nurse nurse) {
+    public String deleteNurseSubmit(@ModelAttribute Nurse nurse) {
         // TODO add db query here.
     	jdbcTemplate.update("remove from ?.nurse where nid = ?", prefix, nurse.getNid());
         return "deleteNurseResult";
@@ -144,7 +144,7 @@ public class WebController {
 
     @GetMapping("/updateNurse")
     public String updateNurseForm(Model model) {
-        model.addAttribute("Nurse", new Nurse());
+        model.addAttribute("nurse", new Nurse());
         return "updateNurse";
     }
 
@@ -169,28 +169,68 @@ public class WebController {
     }
 
     @GetMapping("/deleteStaff")
-    public String StaffForm(Model model) {
-        model.addAttribute("Staff", new Staff());
+    public String deleteStaffForm(Model model) {
+        model.addAttribute("staff", new Staff());
         return "deleteStaff";
     }
 
     @PostMapping("/deleteStaff")
-    public String StaffSubmit(@ModelAttribute Staff staff) {
+    public String deleteStaffSubmit(@ModelAttribute Staff staff) {
         // TODO add db query here.
         return "deleteStaffResult";
     }
 
     @GetMapping("/updateStaff")
-    public String StaffForm(Model model) {
-        model.addAttribute("Staff", new Staff());
+    public String updateStaffForm(Model model) {
+        model.addAttribute("staff", new Staff());
         return "updateStaff";
     }
 
     @PostMapping("/updateStaff")
-    public String StaffSubmit(@ModelAttribute Staff staff) {
+    public String updateStaffSubmit(@ModelAttribute Staff staff) {
         // TODO add db query here.
         return "updateStaffResult";
     }
+    
+    @GetMapping("/addPharmacist")
+    public String pharmacistForm(Model model){
+	model.addAttribute("pharmacist", new Pharmacist());
+	return "addPharmacist";
+    }
+
+    @PostMapping("/addPharmacist")
+    public String pharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+	// TODO add db query here.
+ 	return "resultPharmacist";
+    }
+
+    @GetMapping("/deletePharmacist")
+    public String deletePharmacistForm(Model model) {
+        model.addAttribute("pharmacist", new Pharmacist());
+        return "deletePharmacist";
+    }
+
+    @PostMapping("/deletePharmacist")
+    public String deletePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+        // TODO add db query here.
+        return "deletePharmacistResult";
+    }
+    
+    @GetMapping("/updatePharmacist")
+    public String updatePharmacistForm(Model model) {
+        model.addAttribute("pharmacist", new Pharmacist());
+        return "updatePharmacist";
+    }
+    
+    @PostMapping("/updatePharmacist")
+    public String updatePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+        // TODO add db query here.
+        return "updatePharmacistResult";
+    }
+
+
+
+    
 
     /* TODO add&update patient treatment record.
     When adding PID, appointment number, reason of visit, and date of visit cannot be left as blank.

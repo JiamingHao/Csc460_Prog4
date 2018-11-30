@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update A Patient Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<h1>Update a patient record</h1>
+    <form action="#" th:action="@{/updatePatient}" th:object="${patient}" method="post">
+        <p>Enter the pid of the patient you want to update: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{pid}" required/></p>
+    	<p>New First Name: <input type="text" th:field="*{firstName}" required/></p>
+        <p>New Last Name: <input type="text" th:field="*{lastName}" required/></p>
+        <p>New Address: <input type="text" th:field="*{address}" /></p>
+        <p>New Contact Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{contactNumber}" /></p>
+        <fieldset style="margin-left: -15px;">
+ 			<legend>Select Gender Again</legend>
+ 			<input id="1" type="radio" name="gender" value="Male" th:field="*{gender}"> Male<br> 
+ 			<input id="2" type="radio" name="gender" value="Female" th:field="*{gender}"> Female<br>
+ 			<input id="3" type="radio" name="gender" value="Others" th:field="*{gender}"> Others<br>
+ 	</fieldset>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<script>
+</script>
+</body>
+</html>

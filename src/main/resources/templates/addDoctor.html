@@ -8,9 +8,9 @@
 <body>
     <h1>Add A Doctor Record</h1>
     <form action="#" th:action="@{/addDoctor}" th:object="${doctor}" method="post">
-        <p>Did: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{did}" /></p>
-    	<p>First Name: <input type="text" th:field="*{firstName}" /></p>
-        <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+        <p>Did: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{did}" required/></p>
+    	<p>First Name: <input type="text" th:field="*{firstName}" required/></p>
+        <p>Last Name: <input type="text" th:field="*{lastName}" required/></p>
         <p>Date of Birth: <input id="datePickerId" type="date" name="dob" th:field="*{date_of_birth}" required> </p>
         <p>Department ID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{departmentId}" /></p>
         <p>Office Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{officeNo}" /></p>

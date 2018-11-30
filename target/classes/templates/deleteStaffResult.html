@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Deleted Staff Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Staff Deleted</h1>
+    <p th:text="'Eid: ' + ${staff.eid} + ' has been deleted successfully.'" />
+    <a href="/deleteStaff">Delete another staff</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>

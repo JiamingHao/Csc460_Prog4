@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Updated Doctor Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Doctor Updated</h1>
+    <p th:text="'Did of the doctor updated: ' + ${doctor.did}" />
+    <p th:text="'First Name: ' + ${doctor.firstName}" />
+    <p th:text="'Last Name: ' + ${doctor.lastName}" />
+    <p th:text="'Status: ' + ${doctor.status}" />
+    <p th:text="'Department ID: ' + ${doctor.departmentId}" />
+    <p th:text="'Office Number: ' + ${doctor.officeNo}" />
+    <a href="/updateDoctor">Update another doctor</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>

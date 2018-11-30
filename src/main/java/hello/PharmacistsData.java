@@ -1,7 +1,7 @@
 package hello;
 
 public class PharmacistsData {
-	private long pharmacistId;
+    private long pharmacistId;
     private long pid;
     private String medicineName;
     private int numberOfDays;

@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Deleted Patient Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Patient Deleted</h1>
+    <p th:text="'Pid: ' + ${patient.pid} + ' has been deleted successfully.'" />
+    <a href="/deletePatient">Delete another patient</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>

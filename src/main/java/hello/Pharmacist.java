@@ -1,25 +1,22 @@
 package hello;
 
-public class Staff {
-	private long eid;
+public class Pharmacist {
+	
+	private long pharmacist_id;
+	private long departmentId;
 	private String lastName;
 	private String firstName;
 	private String date_of_birth;
-	private long departmentId;
 	private int officeNo;
-	private int salary;
-	private String jobTitle;
-	private String gender;
-	private int contactNumber;
 	
-	public long getEid()
+	public long getPharmacist_id()
 	{
-		return eid;
+		return pharmacist_id;
 	}
 	
-	public void setEid(long eid)
+	public void setPharmacist_id(long pharmacist_id)
 	{
-		this.eid = eid;
+		this.pharmacist_id = pharmacist_id;
 	}
 	
 	public String getLastName()
@@ -70,46 +67,6 @@ public class Staff {
 	public void setOfficeNo(int officeNo)
 	{
 		this.officeNo = officeNo;
-	}
-	
-	public int getSalary()
-	{	
-		return salary;
-	}
-
-	public void setSalary(int salary)
-	{	
-		this.salary = salary;
-	}
-
-	public String getJobTitle()
-	{
-		return jobTitle;
-	}
-
-	public void setJobTitle(String jobTitle)
-	{
-		this.jobTitle = jobTitle;	
-	}
-
-	public String getGender()
-	{
-		return gender;
-	}
-	
-	public void setGender(String gender)
-	{
-		this.gender = gender;
-	}
-	
-	public int getContactNumber()
-	{
-		return contactNumber;
-	}
-	
-	public void setContactNumber(int contactNumber)
-	{
-		this.contactNumber = contactNumber;
 	}
 
 }
