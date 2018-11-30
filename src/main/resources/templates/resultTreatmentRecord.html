@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Treatment Record Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Treatment Record Added</h1>
+    <p th:text="'Aid: ' + ${treatmentRecord.aid}" />
+    <p th:text="'Pid: ' + ${treatmentRecord.pid}" />
+    <p th:text="'Did: ' + ${treatmentRecord.did}" />
+    <p th:text="'Visit Reason: ' + ${treatmentRecord.visitReason}" />
+    <p th:text="'Visit Date: ' + ${treatmentRecord.visitDate}" />
+    <p th:text="'Initial Hosptialized Data: ' + ${treatmentRecord.initialHospitalizedDate}" />
+    <p th:text="'Expected Discharge Date: ' + ${treatmentRecord.expectedDischargeDate}" />
+    <p th:text="'Discharge Date: ' + ${treatmentRecord.dischargeDate}" />
+    <p th:text="'Hospitalized Room No: ' + ${treatmentRecord.hospitalizedRoomNo}" />
+    <p th:text="'Treatment Method: ' + ${treatmentRecord.treatmentMethod}" />
+
+    <a href="/addTreatmentRecord">Add another treatment record</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>
