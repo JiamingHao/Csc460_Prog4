@@ -1,52 +1,54 @@
 package hello;
 
+import java.sql.Date;
+
 public class TreatmentRecord {
-	private long aid;
-	private long pid;
+	private int aid;
+	private int pid;
 	private String visitReason;
-	private String visitDate;
-	private String initialHospitalizedDate;
-	private String expectedDischargeDate;
-	private String dischargeDate;
+	private Date visitDate;
+	private Date initialHospitalizedDate;
+	private Date expectedDischargeDate;
+	private Date dischargeDate;
 	private int hospitalizedRoomNo;
 	private String treatmentMethod;
-	private long did;
+	private int did;
 
-	public long getAid(){
+	public int getAid(){
 		return aid;
 	}
 
-	public void setAid(long aid){
+	public void setAid(int aid){
 		this.aid = aid;
 	}
 
-	public long getPid(){
+	public int getPid(){
 		return pid;
 	}
 
-	public void setPid(long pid){
+	public void setPid(int pid){
 		this.pid = pid;
 	}
 
-	public String getVisitReason() { return visitReason; }
+	public Date getVisitReason() { return visitReason; }
 
 	public void setVisitReason(String visitReason) { this.visitReason = visitReason; }
 
-	public String getVisitDate() { return visitDate; }
+	public Date getVisitDate() { return visitDate; }
 
-	public void setVisitDate(String visitDate) { this.visitDate = visitDate; }
+	public void setVisitDate(Date visitDate) { this.visitDate = visitDate; }
 
-	public String getInitialHospitalizedDate() { return initialHospitalizedDate; }
+	public Date getInitialHospitalizedDate() { return initialHospitalizedDate; }
 
-	public void setInitialHospitalizedDate(String initialHospitalizedDate) { this.initialHospitalizedDate = initialHospitalizedDate; }
+	public void setInitialHospitalizedDate(Date initialHospitalizedDate) { this.initialHospitalizedDate = initialHospitalizedDate; }
 
-	public String getExpectedDischargeDate() { return expectedDischargeDate; }
+	public Date getExpectedDischargeDate() { return expectedDischargeDate; }
 
-	public void setExpectedDischargeDate(String expectedDischargeDate) { this.expectedDischargeDate = expectedDischargeDate; }
+	public void setExpectedDischargeDate(Date expectedDischargeDate) { this.expectedDischargeDate = expectedDischargeDate; }
 
-	public String getDischargeDate() { return dischargeDate; }
+	public Date getDischargeDate() { return dischargeDate; }
 
-	public void setDischargeDate(String dischargeDate) { this.dischargeDate = dischargeDate; }
+	public void setDischargeDate(Date dischargeDate) { this.dischargeDate = dischargeDate; }
 
 	public int getHospitalizedRoomNo() { return hospitalizedRoomNo; }
 
@@ -56,12 +58,12 @@ public class TreatmentRecord {
 
 	public void setTreatmentMethod(String treatmentMethod) { this.treatmentMethod = treatmentMethod; }
 
-	public long getDid()
+	public int getDid()
 	{
 		return did;
 	}
 
-	public void setDid(long did)
+	public void setDid(int did)
 	{
 		this.did = did;
 	}

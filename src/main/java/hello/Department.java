@@ -1,17 +1,17 @@
 package hello;
 
 public class Department {
-	private long departmentId;
+	private int departmentId;
 	private String name;
 	private String buildingName;
 	private int officeNo;
 
-    public long getDepartmentId()
+    public int getDepartmentId()
     {
         return departmentId;
     }
 
-    public void setDepartmentId(long departmentId)
+    public void setDepartmentId(int departmentId)
     {
         this.departmentId = departmentId;
     }

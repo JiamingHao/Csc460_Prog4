@@ -1,23 +1,25 @@
 package hello;
 
+import java.sql.Date;
+
 public class CashiersData {
-    private long recordId;
-    private long pid;
+    private int aid;
+    private int pid;
     private double dueAmount;
-    private String dueDate;
+    private Date dueDate;
     private String status;
-    private String paymentDate;
-    private long eid;
+    private Date paymentDate;
+    private int eid;
 
-    public long getRecordId() { return recordId; }
+    public int getAid() { return aid; }
 
-    public void setRecordId(long recordId) { this.recordId = recordId; }
+    public void setAid(int aid) { this.aid = aid; }
 
-    public long getPid(){
+    public int getPid(){
         return pid;
     }
 
-    public void setPid(long pid){
+    public void setPid(int pid){
         this.pid = pid;
     }
 
@@ -25,24 +27,24 @@ public class CashiersData {
 
     public void setDueAmount(double dueAmount) { this.dueAmount = dueAmount; }
 
-    public String getDueDate() { return dueDate; }
+    public Date getDueDate() { return dueDate; }
 
-    public void setDueDate(String dueDate) { this.dueDate = dueDate; }
+    public void setDueDate(Date dueDate) { this.dueDate = dueDate; }
 
     public String getStatus() { return status; }
 
     public void setStatus(String status) { this.status = status; }
 
-    public String getPaymentDate() { return paymentDate; }
+    public Date getPaymentDate() { return paymentDate; }
 
-    public void setPaymentDate(String paymentDate) { this.paymentDate = paymentDate; }
+    public void setPaymentDate(Date paymentDate) { this.paymentDate = paymentDate; }
 
-    public long getEid()
+    public int getEid()
     {
         return eid;
     }
 
-    public void setEid(long eid)
+    public void setEid(int eid)
     {
         this.eid = eid;
     }

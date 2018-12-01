@@ -1,33 +1,33 @@
 package hello;
 
 public class ReceptionistsData {
-	private long aid;
-    private long pid;
-    private long eid;
+	private int aid;
+    private int pid;
+    private int eid;
     private String date;
 
-    public long getAid(){
+    public int getAid(){
         return aid;
     }
 
-    public void setAid(long aid){
+    public void setAid(int aid){
         this.aid = aid;
     }
 
-    public long getPid(){
+    public int getPid(){
         return pid;
     }
 
-    public void setPid(long pid){
+    public void setPid(int pid){
         this.pid = pid;
     }
 
-    public long getEid()
+    public int getEid()
     {
         return eid;
     }
 
-    public void setEid(long did)
+    public void setEid(int did)
     {
         this.eid = eid;
     }
