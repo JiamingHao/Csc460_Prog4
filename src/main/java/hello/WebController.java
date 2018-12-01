@@ -259,4 +259,16 @@ public class WebController {
     /* TODO Update department room number and building name from the department table.
     In fact, anything in this table can be modified and updated except the DID.
     */
+    
+    @GetMapping("/updateDepartment")
+    public String updateDepartmentForm(Model model){
+	model.addAttribute("department", new Department());
+	return "updateDepartment";
+    }
+    
+    @PostMapping("/updateDepartment")
+    public String updateDepartmentSubmit(@ModelAttribute Department  department) {
+	// TODO add db query here.
+ 	return "updateDepartmentResult";
+    }
 }

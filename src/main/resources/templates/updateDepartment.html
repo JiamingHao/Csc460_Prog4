@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update A Department Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Update a Department</h1>
+    <form action="#" th:action="@{/updateDepartment}" th:object="${department}" method="post">
+        <p>Enter the id of the department your want to update: <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{departmentId}" required/></p>
+    	<p>Department Name: <input type="text" th:field="*{name}" /></p>
+        <p>Building Name: <input type="text" th:field="*{buildingName}" /></p>
+        <p>Office Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{officeNo}" /></p>
+	
+	
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<script>
+</script>
+</body>
+</html>

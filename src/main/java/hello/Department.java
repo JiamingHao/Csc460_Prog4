@@ -26,7 +26,7 @@ public class Department {
         this.name = name;
     }
 
-    public String getBuildName()
+    public String getBuildingName()
     {
         return buildingName;
     }
