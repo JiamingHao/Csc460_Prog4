@@ -234,9 +234,9 @@ public class WebController {
     }
 
     @PostMapping("/addTreatmentRecord")
-    public String treatmentSubmit(@ModelAttribute Pharmacist pharmacist) {
+    public String treatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	// TODO add db query here.
- 	return "resultPharmacist";
+ 	return "resultTreatmentRecord";
     }
 
     /* TODO add&update cashier record.
