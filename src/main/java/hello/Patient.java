@@ -1,21 +1,23 @@
 package hello;
 
+import java.sql.Date;
+
 public class Patient {
 
-	private long pid;
+	private int pid;
 	private String lastName;
 	private String firstName;
 	private String gender;
-	private String date_of_birth;
+	private Date date_of_birth;
 	private String address;
 	private String contactNumber;
 
 
-	public long getPid(){
+	public int getPid(){
 		return pid;
 	}
 	
-	public void setPid(long pid){
+	public void setPid(int pid){
 		this.pid = pid;
 	}
 	
@@ -48,12 +50,12 @@ public class Patient {
 		this.gender = gender;
 	}
 	
-	public String getDate_of_birth()
+	public Date getDate_of_birth()
 	{
 		return this.date_of_birth;
 	}
 	
-	public void setDate_of_birth(String date_of_birth)
+	public void setDate_of_birth(Date date_of_birth)
 	{
 		this.date_of_birth = date_of_birth;
 	}

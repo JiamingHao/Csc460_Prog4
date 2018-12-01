@@ -1,19 +1,21 @@
 package hello;
 
+import java.sql.Date;
+
 public class Nurse {
-	private long nid;
+	private int nid;
 	private String lastName;
 	private String firstName;
-	private String date_of_birth;
-	private long departmentId;
+	private Date date_of_birth;
+	private int departmentId;
 	private int roomNo;
 	
-	public long getNid()
+	public int getNid()
 	{
 		return nid;
 	}
 	
-	public void setNid(long nid)
+	public void setNid(int nid)
 	{
 		this.nid = nid;
 	}
@@ -38,23 +40,23 @@ public class Nurse {
 		this.firstName = firstName;
 	}
 	
-	public String getDate_of_birth()
+	public Date getDate_of_birth()
 	{
 		return this.date_of_birth;
 	}
 	
-	public void setDate_of_birth(String date_of_birth)
+	public void setDate_of_birth(Date date_of_birth)
 	{
 		this.date_of_birth = date_of_birth;
 	}
 	
-	public long getDepartmentId()
+	public int getDepartmentId()
 	{
 		return departmentId;
 	}
 	
 
-	public void setDepartmentId(long departmentId)
+	public void setDepartmentId(int departmentId)
 	{
 		this.departmentId = departmentId;	
 	}

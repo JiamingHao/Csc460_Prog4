@@ -1,20 +1,22 @@
 package hello;
 
+import java.sql.Date;
+
 public class Pharmacist {
 	
-	private long pharmacist_id;
-	private long departmentId;
+	private int pharmacist_id;
+	private int departmentId;
 	private String lastName;
 	private String firstName;
-	private String date_of_birth;
+	private Date date_of_birth;
 	private int officeNo;
 	
-	public long getPharmacist_id()
+	public int getPharmacist_id()
 	{
 		return pharmacist_id;
 	}
 	
-	public void setPharmacist_id(long pharmacist_id)
+	public void setPharmacist_id(int pharmacist_id)
 	{
 		this.pharmacist_id = pharmacist_id;
 	}
@@ -39,22 +41,22 @@ public class Pharmacist {
 		this.firstName = firstName;
 	}
 	
-	public String getDate_of_birth()
+	public Date getDate_of_birth()
 	{
 		return this.date_of_birth;
 	}
 	
-	public void setDate_of_birth(String date_of_birth)
+	public void setDate_of_birth(Date date_of_birth)
 	{
 		this.date_of_birth = date_of_birth;
 	}
 	
-	public long getDepartmentId()
+	public int getDepartmentId()
 	{
 		return departmentId;
 	}
 
-	public void setDepartmentId(long departmentId)
+	public void setDepartmentId(int departmentId)
 	{
 		this.departmentId = departmentId;	
 	}

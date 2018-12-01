@@ -1,20 +1,20 @@
 package hello;
 
 public class PharmacistsData {
-    private long pharmacistId;
-    private long pid;
+    private int pharmacistId;
+    private int pid;
     private String medicineName;
     private int numberOfDays;
 
-    public long getPharmacistId() { return pharmacistId; }
+    public int getPharmacistId() { return pharmacistId; }
 
-    public void setPharmacistId(long pharmacistId) { this.pharmacistId = pharmacistId; }
+    public void setPharmacistId(int pharmacistId) { this.pharmacistId = pharmacistId; }
 
-    public long getPid(){
+    public int getPid(){
         return pid;
     }
 
-    public void setPid(long pid){
+    public void setPid(int pid){
         this.pid = pid;
     }
 
