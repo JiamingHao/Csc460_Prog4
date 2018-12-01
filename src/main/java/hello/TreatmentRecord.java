@@ -30,7 +30,7 @@ public class TreatmentRecord {
 		this.pid = pid;
 	}
 
-	public Date getVisitReason() { return visitReason; }
+	public String getVisitReason() { return visitReason; }
 
 	public void setVisitReason(String visitReason) { this.visitReason = visitReason; }
 
