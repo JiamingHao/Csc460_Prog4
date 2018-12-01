@@ -253,6 +253,18 @@ public class WebController {
     When adding, only the payment date can be left as blank.
     The update must not change the PID where as other records should be allowed to modify including the EID.
     */
+    
+    @GetMapping("/updateCashierData")
+    public String updateCashierDataForm(Model model){
+	model.addAttribute("cashiersData", new CashiersData());
+	return "updateCashierData";
+    }
+    
+    @PostMapping("/updateCashierData")
+    public String updateCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
+	// TODO add db query here.
+ 	return "updateCashierDataResult";
+    }
 
 
 

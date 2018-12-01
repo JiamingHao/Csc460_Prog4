@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update A Cashier Data Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Update A Cashier Data Record</h1>
+    <form action="#" th:action="@{/updateCashierData}" th:object="${cashiersData}" method="post">
+        <p>Enter the appointment ID of the cashier data record you want to update: <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{aid}" required/></p>
+    	<p>Due Amount: <input type="number" step="0.01" th:field="*{dueAmount}"/></p>
+        <p>Due Date: <input id="datePickerId" type="date" th:field="*{dueDate}"> </p>
+	<p>Payment Date: <input id="datePickerId" type="date" th:field="*{paymentDate}"> </p>
+    	<p>Status: <input type="text" th:field="*{status}"/></p>
+        <p>EID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{eid}" /></p>
+	
+	<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+<script>
+</script>
+</body>
+</html>
