@@ -27,7 +27,6 @@ public class WebController {
   @Autowired
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
-    // TODO update table prefix below.
     private String prefix;
 
     @PostConstruct
