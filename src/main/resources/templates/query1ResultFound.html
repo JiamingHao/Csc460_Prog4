@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Check-in</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Your information.</h1>
+    <p th:text="'Pid of the patient updated: ' + ${result.pid}" />
+    <p th:text="'First Name: ' + ${result.firstName}" />
+    <p th:text="'Last Name: ' + ${result.lastName}" />
+    <p th:text="'Gender: ' + ${result.gender}" />
+    <p th:text="'Date of Birth: ' + ${result.date_of_birth}" />
+    <p th:text="'Last Visit Date: ' + ${result.visitDate}" />
+    <p th:text="'Last Visit Reason: ' + ${result.visitReason}" />
+    <p th:text="'Last Treatment Method: ' + ${result.treatmentMethod}" />
+    <p th:text="'Last Time Doctor Id: ' + ${result.did}" />
+    <a href="/index.html">Home</a>
+</body>
+</html>

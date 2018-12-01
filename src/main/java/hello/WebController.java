@@ -283,4 +283,17 @@ public class WebController {
 	// TODO add db query here.
  	return "updateDepartmentResult";
     }
+
+    @GetMapping("/query1")
+    public String query1Form(Model model) {
+        model.addAttribute("treatmentRecord", new TreatmentRecord());
+        return "query1";
+    }
+
+    @PostMapping("/query1")
+    public String query1Submit(@ModelAttribute TreatmentRecord treatmentRecord) {
+        //TODO query to check result, if found return "query1ResultFound", if not return "query1ResultNotFound";
+        return "query1ResultFound";
+    }
+
 }
