@@ -12,5 +12,5 @@ public class Receptionist extends Staff {
     private int salary;
     private String jobTitle;
     private String gender;
-    private int contactNumber;
+    private String contactNumber;
 }

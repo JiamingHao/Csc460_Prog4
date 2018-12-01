@@ -12,7 +12,7 @@ public class Staff {
 	private int salary;
 	private String jobTitle;
 	private String gender;
-	private int contactNumber;
+	private String contactNumber;
 	
 	public int getEid()
 	{
@@ -104,12 +104,12 @@ public class Staff {
 		this.gender = gender;
 	}
 	
-	public int getContactNumber()
+	public String getContactNumber()
 	{
 		return contactNumber;
 	}
 	
-	public void setContactNumber(int contactNumber)
+	public void setContactNumber(String contactNumber)
 	{
 		this.contactNumber = contactNumber;
 	}
