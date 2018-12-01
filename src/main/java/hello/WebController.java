@@ -246,7 +246,7 @@ public class WebController {
     @PostMapping("/updateTreatmentRecord")
     public String updatetreatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	// TODO add db query here.
- 	return "resultTreatmentRecord";
+ 	return "updateTreatmentRecordResult";
     }
 
     /* TODO add&update cashier record.

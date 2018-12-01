@@ -8,7 +8,14 @@
 <body>
 	<h1>Updadte A Treatment Record</h1>
     <form action="#" th:action="@{/updateTreatmentRecord}" th:object="${treatmentRecord}" method="post">
-        <p>Enter the aid of the treatment: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{aid}" required/></p>
+        <p>Enter the appointment number for the treatment record you want to update: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{aid}" required/></p>
+        <p>Enter new Did: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{did}"/></p>
+        <p>Enter new Initial Hospitalized Date: <input id="datePickerId" type="date" th:field="*{initialHospitalizedDate}"> </p>
+        <p>Enter new Expected Discharge Date: <input id="datePickerId" type="date" th:field="*{expectedDischargeDate}"> </p>
+        <p>Enter new Discharge Date: <input id="datePickerId" type="date" th:field="*{dischargeDate}"> </p>
+        <p>Enter new Hosptialized Room No: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{hospitalizedRoomNo}" required/></p>
+        <p>Enter new Treatment Method: <input type="text" th:field="*{treatmentMethod}"/></p>
+        
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 <script>

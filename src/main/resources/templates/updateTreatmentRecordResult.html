@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Updated Treatment Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Treatment Updated</h1>
+    <p th:text="'Aid of the treatment record updated: ' + ${treatmentRecord.aid}" />
+    <p th:text="'Did: ' + ${treatmentRecord.did}" />
+    <p th:text="'Initial hospitalized date: ' + ${treatmentRecord.initialHospitalizedDate}" />
+    <p th:text="'Expected discharge date: ' + ${treatmentRecord.expectedDischargeDate}" />
+    <p th:text="'Discharge date: ' + ${treatmentRecord.dischargeDate}" />
+    <p th:text="'Hosptialized Room Number: ' + ${treatmentRecord.hospitalizedRoomNo}" />
+    <p th:text="'Treatment Method: ' + ${treatmentRecord.treatmentMethod}" />
+    <a href="/updateTreatmentRecord">Update another treatment record</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>
