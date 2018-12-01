@@ -286,12 +286,12 @@ public class WebController {
 
     @GetMapping("/query1")
     public String query1Form(Model model) {
-        model.addAttribute("treatmentRecord", new TreatmentRecord());
+        model.addAttribute("patient", new Patient());
         return "query1";
     }
 
     @PostMapping("/query1")
-    public String query1Submit(@ModelAttribute TreatmentRecord treatmentRecord) {
+    public String query1Submit(@ModelAttribute Patient patient) {
         //TODO query to check result, if found return "query1ResultFound", if not return "query1ResultNotFound";
         return "query1ResultFound";
     }
