@@ -8,7 +8,7 @@ public class Pharmacist {
 	private int departmentId;
 	private String lastName;
 	private String firstName;
-	private Date date_of_birth;
+	private String date_of_birth;
 	private int officeNo;
 	
 	public int getPharmacist_id()
@@ -41,12 +41,12 @@ public class Pharmacist {
 		this.firstName = firstName;
 	}
 	
-	public Date getDate_of_birth()
+	public String getDate_of_birth()
 	{
 		return this.date_of_birth;
 	}
 	
-	public void setDate_of_birth(Date date_of_birth)
+	public void setDate_of_birth(String date_of_birth)
 	{
 		this.date_of_birth = date_of_birth;
 	}

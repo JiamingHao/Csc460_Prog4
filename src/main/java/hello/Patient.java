@@ -8,7 +8,7 @@ public class Patient {
 	private String lastName;
 	private String firstName;
 	private String gender;
-	private Date date_of_birth;
+	private String date_of_birth;
 	private String address;
 	private String contactNumber;
 
@@ -50,12 +50,12 @@ public class Patient {
 		this.gender = gender;
 	}
 	
-	public Date getDate_of_birth()
+	public String getDate_of_birth()
 	{
 		return this.date_of_birth;
 	}
 	
-	public void setDate_of_birth(Date date_of_birth)
+	public void setDate_of_birth(String date_of_birth)
 	{
 		this.date_of_birth = date_of_birth;
 	}

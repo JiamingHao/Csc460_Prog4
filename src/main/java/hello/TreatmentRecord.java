@@ -6,10 +6,10 @@ public class TreatmentRecord {
 	private int aid;
 	private int pid;
 	private String visitReason;
-	private Date visitDate;
-	private Date initialHospitalizedDate;
-	private Date expectedDischargeDate;
-	private Date dischargeDate;
+	private String visitDate;
+	private String initialHospitalizedDate;
+	private String expectedDischargeDate;
+	private String dischargeDate;
 	private int hospitalizedRoomNo;
 	private String treatmentMethod;
 	private int did;
@@ -34,21 +34,21 @@ public class TreatmentRecord {
 
 	public void setVisitReason(String visitReason) { this.visitReason = visitReason; }
 
-	public Date getVisitDate() { return visitDate; }
+	public String getVisitDate() { return visitDate; }
 
-	public void setVisitDate(Date visitDate) { this.visitDate = visitDate; }
+	public void setVisitDate(String visitDate) { this.visitDate = visitDate; }
 
-	public Date getInitialHospitalizedDate() { return initialHospitalizedDate; }
+	public String getInitialHospitalizedDate() { return initialHospitalizedDate; }
 
-	public void setInitialHospitalizedDate(Date initialHospitalizedDate) { this.initialHospitalizedDate = initialHospitalizedDate; }
+	public void setInitialHospitalizedDate(String initialHospitalizedDate) { this.initialHospitalizedDate = initialHospitalizedDate; }
 
-	public Date getExpectedDischargeDate() { return expectedDischargeDate; }
+	public String getExpectedDischargeDate() { return expectedDischargeDate; }
 
-	public void setExpectedDischargeDate(Date expectedDischargeDate) { this.expectedDischargeDate = expectedDischargeDate; }
+	public void setExpectedDischargeDate(String expectedDischargeDate) { this.expectedDischargeDate = expectedDischargeDate; }
 
-	public Date getDischargeDate() { return dischargeDate; }
+	public String getDischargeDate() { return dischargeDate; }
 
-	public void setDischargeDate(Date dischargeDate) { this.dischargeDate = dischargeDate; }
+	public void setDischargeDate(String dischargeDate) { this.dischargeDate = dischargeDate; }
 
 	public int getHospitalizedRoomNo() { return hospitalizedRoomNo; }
 

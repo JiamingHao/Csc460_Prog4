@@ -28,11 +28,12 @@ public class WebController {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
     // TODO update table prefix below.
-    private String prefix = "";
+    private String prefix;
 
     @PostConstruct
     private void postConstruct() {
         jdbcTemplate = new JdbcTemplate(dataSource);
+	prefix = "dmcccccc";
     }
 
     @GetMapping("/addPatient")
@@ -43,7 +44,7 @@ public class WebController {
 
     @PostMapping("/addPatient")
     public String patientSubmit(@ModelAttribute Patient patient) {
-        jdbcTemplate.update("insert into ?.patient values (?, ?, ?, ?, ?, ?, ?)", prefix, patient.getPid(), patient.getLastName(), patient.getFirstName(), patient.getGender(), patient.getDate_of_birth(), patient.getAddress(), patient.getContactNumber());
+        jdbcTemplate.update("insert into " + prefix + ".patient (pid, lastName, firstName, gender, date_of_birth, address, contactNumber) values (?, ?, ?, ?, to_date(?,'YYYY-MM-DD'), ?, ?)", patient.getPid(), patient.getLastName(), patient.getFirstName(), patient.getGender(), patient.getDate_of_birth(), patient.getAddress(), patient.getContactNumber());
         return "resultPatient";
     }
 

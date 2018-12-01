@@ -15,7 +15,7 @@
         <p>Visit Date: <input id="datePickerId" type="date" th:field="*{visitDate}" required> </p>
         <p>Initial Hosptialized Date: <input id="datePickerId" type="date" th:field="*{initialHospitalizedDate}"> </p>
         <p>Expected Discharge Date: <input id="datePickerId" type="date" th:field="*{expectedDischargeDate}"> </p>
-        <p>Discharge Date: <input id="datePickerId" type="date" name="dob" th:field="*{dischargeDate}"> </p>
+        <p>Discharge Date: <input id="datePickerId" type="date" th:field="*{dischargeDate}"> </p>
         <p>Hosptialized Room No: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{hospitalizedRoomNo}" required/></p>
         <p>Treatment Method: <input type="text" th:field="*{treatmentMethod}"/></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>

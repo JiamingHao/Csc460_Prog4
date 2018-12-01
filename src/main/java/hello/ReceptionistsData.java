@@ -1,7 +1,7 @@
 package hello;
 
 public class ReceptionistsData {
-	private int aid;
+    private int aid;
     private int pid;
     private int eid;
     private String date;

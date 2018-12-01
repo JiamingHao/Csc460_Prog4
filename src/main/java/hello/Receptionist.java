@@ -6,7 +6,7 @@ public class Receptionist extends Staff {
     private int eid;
     private String lastName;
     private String firstName;
-    private Date date_of_birth;
+    private String date_of_birth;
     private int departmentId;
     private int officeNo;
     private int salary;
