@@ -1,5 +1,7 @@
 package hello;
 
+import java.sql.Date;
+
 public class ReceptionistsData {
 	private int aid;
     private int pid;
