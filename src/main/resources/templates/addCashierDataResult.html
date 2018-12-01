@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Added Cashier Data Record</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Cashier Data Record Added</h1>
+    <p th:text="'PID: ' + ${cashiersData.pid}" />
+    <p th:text="'Due Amount: ' + ${cashiersData.dueAmount}" />
+    <p th:text="'Due Date: ' + ${cashiersData.dueDate}" />
+    <p th:text="'Payment Date: ' + ${cashiersData.paymentDate}" />
+    <p th:text="'Status: ' + ${cashiersData.status}" />
+    <p th:text="'Eid: ' + ${cashiersData.eid}" />
+    <a href="/addCashierData">Add another cashier data record</a> <br>
+    <a href="/index.html">Home</a>
+</body>
+</html>

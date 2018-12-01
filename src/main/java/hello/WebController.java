@@ -254,6 +254,18 @@ public class WebController {
     The update must not change the PID where as other records should be allowed to modify including the EID.
     */
     
+    @GetMapping("/addCashierData")
+    public String addCashierDataForm(Model model){
+	model.addAttribute("cashiersData", new CashiersData());
+	return "addCashierData";
+    }
+    
+    @PostMapping("/addCashierData")
+    public String addCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
+	// TODO add db query here.
+ 	return "addCashierDataResult";
+    }
+    
     @GetMapping("/updateCashierData")
     public String updateCashierDataForm(Model model){
 	model.addAttribute("cashiersData", new CashiersData());
