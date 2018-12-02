@@ -81,7 +81,7 @@ public class WebController {
 
     @PostMapping("/addDoctor")
     public String doctorSubmit(@ModelAttribute Doctor doctor) {
-        jdbcTemplate.update("insert into " + prefix + ".doctor values (?,?,?,?,?,?,?)", doctor.getDid(), doctor.getLastName(), doctor.getFirstName(), doctor.getDate_of_birth(), doctor.getStatus(), doctor.getDepartmentId(), doctor.getOfficeNo());
+        jdbcTemplate.update("insert into " + prefix + ".doctor values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?)", doctor.getDid(), doctor.getLastName(), doctor.getFirstName(), doctor.getDate_of_birth(), doctor.getStatus(), doctor.getDepartmentId(), doctor.getOfficeNo());
     return "resultDoctor";
     }
 
@@ -119,7 +119,7 @@ public class WebController {
 
     @PostMapping("/addNurse")
     public String nurseSubmit(@ModelAttribute Nurse nurse) {
-        jdbcTemplate.update("insert into " + prefix + ".nurse values (?,?,?,?,?,?)", nurse.getNid(), nurse.getLastName(), nurse.getFirstName(), nurse.getDate_of_birth(), nurse.getDepartmentId(), nurse.getRoomNo());
+        jdbcTemplate.update("insert into " + prefix + ".nurse values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?)", nurse.getNid(), nurse.getLastName(), nurse.getFirstName(), nurse.getDate_of_birth(), nurse.getDepartmentId(), nurse.getRoomNo());
     return "resultNurse";
     }
 
@@ -155,7 +155,7 @@ public class WebController {
 
     @PostMapping("/addStaff")
     public String staffSubmit(@ModelAttribute Staff staff) {
-        jdbcTemplate.update("insert into " + prefix + ".staff values (?,?,?,?,?,?,?,?,?,?)", staff.getEid(), staff.getLastName(), staff.getFirstName(), staff.getDate_of_birth(), staff.getDepartmentId(), staff.getOfficeNo(), staff.getSalary(), staff.getJobTitle(), staff.getGender(), staff.getContactNumber());
+        jdbcTemplate.update("insert into " + prefix + ".staff values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?,?,?,?)", staff.getEid(), staff.getLastName(), staff.getFirstName(), staff.getDate_of_birth(), staff.getDepartmentId(), staff.getOfficeNo(), staff.getSalary(), staff.getJobTitle(), staff.getGender(), staff.getContactNumber());
     return "resultStaff";
     }
 
@@ -191,7 +191,7 @@ public class WebController {
 
     @PostMapping("/addPharmacist")
     public String pharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
-        jdbcTemplate.update("insert into " + prefix + ".pharmacist values (?,?,?,?,?,?)", pharmacist.getPharmacist_id(), pharmacist.getDepartmentId(), pharmacist.getLastName(), pharmacist.getFirstName(), pharmacist.getDate_of_birth(), pharmacist.getOfficeNo());
+        jdbcTemplate.update("insert into " + prefix + ".pharmacist values (?,?,?,?,to_date(?,'YYYY-MM-DD'),?)", pharmacist.getPharmacist_id(), pharmacist.getDepartmentId(), pharmacist.getLastName(), pharmacist.getFirstName(), pharmacist.getDate_of_birth(), pharmacist.getOfficeNo());
     return "resultPharmacist";
     }
 
@@ -234,6 +234,7 @@ public class WebController {
     @PostMapping("/addTreatmentRecord")
     public String treatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	// TODO add db query here.
+    	jdbcTemplate.update("insert into " + prefix + ".treatmentRecord values (?,?,?,to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),?,?,?)", treatmentRecord.getAid(), treatmentRecord.getPid(), treatmentRecord.getVisitReason(), treatmentRecord.getVisitDate(), treatmentRecord.getInitialHospitalizedDate(), treatmentRecord.getExpectedDischargeDate(), treatmentRecord.getDischargeDate(), treatmentRecord.getHospitalizedRoomNo(), treatmentRecord.getTreatmentMethod(), treatmentRecord.getDid());
  	return "resultTreatmentRecord";
     }
     
@@ -246,6 +247,7 @@ public class WebController {
     @PostMapping("/updateTreatmentRecord")
     public String updatetreatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	// TODO add db query here.
+    	jdbcTemplate.update("update " + prefix + ".treatmentRecord set initialHospitalizedDate = to_date(?,'YYYY-MM-DD'), expectedDischargeDate = to_date(?,'YYYY-MM-DD'), dischargeDate = to_date(?,'YYYY-MM-DD'), hospitalizedRoomNo = ?, treatmentMethod = ?, did = ? where aid = ?", treatmentRecord.getInitialHospitalizedDate(), treatmentRecord.getExpectedDischargeDate(), treatmentRecord.getDischargeDate(), treatmentRecord.getHospitalizedRoomNo(), treatmentRecord.getTreatmentMethod(), treatmentRecord.getDid(), treatmentRecord.getAid());
  	return "updateTreatmentRecordResult";
     }
 
@@ -253,6 +255,18 @@ public class WebController {
     When adding, only the payment date can be left as blank.
     The update must not change the PID where as other records should be allowed to modify including the EID.
     */
+    @GetMapping("/addCashierData")
+    public String addCashierDataForm(Model model){
+	model.addAttribute("cashiersData", new CashiersData());
+	return "addCashierData";
+    }
+    
+    @PostMapping("/addCashierData")
+    public String addCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
+	// TODO add db query here.
+    	jdbcTemplate.update("insert into " + prefix + ".cashiersData values (?,?,?,to_date(?,'YYYY-MM-DD'),?,to_date(?,'YYYY-MM-DD'),?)", cashiersData.getAid(), cashiersData.getPid(), cashiersData.getDueAmount(), cashiersData.getDueDate(), cashiersData.getStatus(), cashiersData.getPaymentDate(), cashiersData.getEid());
+ 	return "addCashierDataResult";
+    }
     
     @GetMapping("/addCashierData")
     public String addCashierDataForm(Model model){
@@ -275,10 +289,9 @@ public class WebController {
     @PostMapping("/updateCashierData")
     public String updateCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
 	// TODO add db query here.
+    	jdbcTemplate.update("update " + prefix + ".cashiersData set dueAmount = ?, dueDate = to_date(?,'YYYY-MM-DD'), status = ?, paymentDate = to_date(?,'YYYY-MM-DD'), eid = ? where aid = ?", cashiersData.getDueAmount(), cashiersData.getDueDate(), cashiersData.getStatus(), cashiersData.getPaymentDate(), cashiersData.getEid(), cashiersData.getAid());
  	return "updateCashierDataResult";
     }
-
-
 
     /* TODO Update department room number and building name from the department table.
     In fact, anything in this table can be modified and updated except the DID.
@@ -293,6 +306,7 @@ public class WebController {
     @PostMapping("/updateDepartment")
     public String updateDepartmentSubmit(@ModelAttribute Department  department) {
 	// TODO add db query here.
+    	jdbcTemplate.update("update " + prefix + ".department set name = ?, buildingName = ?, officeNo = ? where departmentId = ", department.getName(), department.getBuildingName(), department.getOfficeNo(), department.getDepartmentId());
  	return "updateDepartmentResult";
     }
 
