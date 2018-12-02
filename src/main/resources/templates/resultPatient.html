@@ -21,18 +21,12 @@
 <script>
 function checkError()
 {
-	//var errorMsg = ${patient.errorMsg};
-	/*var result = "<h1>";
-	if(document.getElementById("errorMsg").value !== "")
+	if(document.getElementById("errorMsg").innerHTML !== "Error Log: No errors occurred.")
 	{
-		//console.log("Debug");
-		result = result + document.getElementById("errorMsg").value + "</h1>";
-		document.write(result);
-	}*/
- 	//console.log(errorMsg);
-	document.write("<h1> Sorry, there is an error occurred. </h1>" + "<br><p> Detais:" + document.getElementById("errorMsg").innerHTML + "</p>"
+		console.log(document.getElementById("errorMsg").innerHTML);
+		document.write("<h1> Sorry, there is an error occurred. </h1>" + "<br><p> Detais:" + document.getElementById("errorMsg").innerHTML + "</p>"
 + "<a href=\"/index.html\">Home</a>");
-	//alert("Page is loaded");
+	}
 
 }
 </script>

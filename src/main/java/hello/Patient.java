@@ -16,7 +16,7 @@ public class Patient {
 	private String errorMsg;
 	private String opreationName;
 
-	public Patient(){ errorMsg = "";};
+	public Patient(){ errorMsg = "No errors occurred.";};
 	
 	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
 	public String getErrorMsg() {return errorMsg;} 
