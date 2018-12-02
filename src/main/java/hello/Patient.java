@@ -16,13 +16,12 @@ public class Patient {
 	private String errorMsg;
 	private String opreationName;
 
-	public Patient(){ errorMsg = "No errors occurred.";};
+	public Patient(){errorMsg = "No errors occurred.";};
 	
 	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
 	public String getErrorMsg() {return errorMsg;} 
 	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
 	public String getOpreationName() { return opreationName;}
-
 	public int getPid(){
 		return pid;
 	}

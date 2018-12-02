@@ -10,6 +10,16 @@ public class Nurse {
 	private int departmentId;
 	private int roomNo;
 	
+	// Used to record exception info if necessary
+	private String errorMsg;
+	private String opreationName;
+
+	public Nurse(){errorMsg = "No errors occurred.";};
+	
+	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+	public String getErrorMsg() {return errorMsg;} 
+	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
+	
 	public int getNid()
 	{
 		return nid;

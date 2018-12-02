@@ -47,6 +47,10 @@ public class WebController {
         jdbcTemplate.update("insert into " + prefix + ".patient (pid, lastName, firstName, gender, date_of_birth, address, contactNumber) values (?, ?, ?, ?, to_date(?,'YYYY-MM-DD'), ?, ?)", patient.getPid(), patient.getLastName(), patient.getFirstName(), patient.getGender(), patient.getDate_of_birth(), patient.getAddress(), patient.getContactNumber());
 	} catch (RuntimeException e)
 	{	
+		/*
+		* Pass the error message to the attribute
+		* object as record.
+		*/
 		patient.setErrorMsg(e.getMessage());
 		patient.setOpreationName("addPatient");
 	}
@@ -62,7 +66,14 @@ public class WebController {
 
     @PostMapping("/deletePatient")
     public String deletePatientSubmit(@ModelAttribute Patient patient) {
+	try{
         jdbcTemplate.update("delete from " + prefix + ".patient where pid = ?", patient.getPid());
+	} catch (RuntimeException e)
+	{	
+		patient.setErrorMsg(e.getMessage());
+		patient.setOpreationName("deletePatient");
+	}
+
         return "deletePatientResult";
     }
 
@@ -74,7 +85,14 @@ public class WebController {
 
     @PostMapping("/updatePatient")
     public String updatePatientSubmit(@ModelAttribute Patient patient) {
+	try{
         jdbcTemplate.update("update " + prefix + ".patient set lastName = ?, firstName = ?, gender = ?, address = ?, contactNumber = ? where pid = ?", patient.getLastName(), patient.getFirstName(), patient.getGender(), patient.getAddress(), patient.getContactNumber(), patient.getPid());
+	} catch (RuntimeException e)
+	{	
+		patient.setErrorMsg(e.getMessage());
+		patient.setOpreationName("updatePatient");
+	}
+	
         return "updatePatientResult";
     }
 
@@ -88,7 +106,13 @@ public class WebController {
 
     @PostMapping("/addDoctor")
     public String doctorSubmit(@ModelAttribute Doctor doctor) {
+	try{
         jdbcTemplate.update("insert into " + prefix + ".doctor values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?)", doctor.getDid(), doctor.getLastName(), doctor.getFirstName(), doctor.getDate_of_birth(), doctor.getStatus(), doctor.getDepartmentId(), doctor.getOfficeNo());
+	} catch (RuntimeException e)
+	{	
+		doctor.setErrorMsg(e.getMessage());
+		doctor.setOpreationName("addDoctor");
+	}
     return "resultDoctor";
     }
 
@@ -100,7 +124,13 @@ public class WebController {
 
     @PostMapping("/deleteDoctor")
     public String deleteDoctorSubmit(@ModelAttribute Doctor doctor) {
+	try{
         jdbcTemplate.update("delete from " + prefix + ".doctor where did = ?", doctor.getDid());
+	} catch (RuntimeException e)
+	{	
+		doctor.setErrorMsg(e.getMessage());
+		doctor.setOpreationName("deleteDoctor");
+	}
         return "deleteDoctorResult";
     }
 
@@ -112,7 +142,13 @@ public class WebController {
 
     @PostMapping("/updateDoctor")
     public String updateDoctorSubmit(@ModelAttribute Doctor doctor) {
+	try{
         jdbcTemplate.update("update " + prefix + ".doctor set lastName = ?, firstName = ?, status = ?, departmentId = ?, officeNo = ? where did = ?", doctor.getLastName(), doctor.getFirstName(), doctor.getStatus(), doctor.getDepartmentId(), doctor.getOfficeNo(), doctor.getDid());
+	} catch (RuntimeException e)
+	{	
+		doctor.setErrorMsg(e.getMessage());
+		doctor.setOpreationName("updateDoctor");
+	}
         return "updateDoctorResult";
     }
 
@@ -126,7 +162,13 @@ public class WebController {
 
     @PostMapping("/addNurse")
     public String nurseSubmit(@ModelAttribute Nurse nurse) {
+	try{
         jdbcTemplate.update("insert into " + prefix + ".nurse values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?)", nurse.getNid(), nurse.getLastName(), nurse.getFirstName(), nurse.getDate_of_birth(), nurse.getDepartmentId(), nurse.getRoomNo());
+	} catch (RuntimeException e)
+	{	
+		nurse.setErrorMsg(e.getMessage());
+		nurse.setOpreationName("addNurse");
+	}
     return "resultNurse";
     }
 
@@ -138,7 +180,13 @@ public class WebController {
 
     @PostMapping("/deleteNurse")
     public String deleteNurseSubmit(@ModelAttribute Nurse nurse) {
+	try{
         jdbcTemplate.update("delete from " + prefix + ".nurse where nid = ?", nurse.getNid());
+	} catch (RuntimeException e)
+	{	
+		nurse.setErrorMsg(e.getMessage());
+		nurse.setOpreationName("deleteNurse");
+	}
         return "deleteNurseResult";
     }
 
@@ -150,7 +198,13 @@ public class WebController {
 
     @PostMapping("/updateNurse")
     public String updateNurseSubmit(@ModelAttribute Nurse nurse) {
+	try{
         jdbcTemplate.update("update " + prefix + ".nurse set lastName = ?, firstName = ?, status = ?, departmentId = ?, roomNo = ? where nid = ?", nurse.getLastName(), nurse.getFirstName(), nurse.getDepartmentId(), nurse.getRoomNo(), nurse.getNid());
+	} catch (RuntimeException e)
+	{	
+		nurse.setErrorMsg(e.getMessage());
+		nurse.setOpreationName("updateNurse");
+	}
         return "updateNurseResult";
     }
 
@@ -162,7 +216,13 @@ public class WebController {
 
     @PostMapping("/addStaff")
     public String staffSubmit(@ModelAttribute Staff staff) {
+	try{
         jdbcTemplate.update("insert into " + prefix + ".staff values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?,?,?,?)", staff.getEid(), staff.getLastName(), staff.getFirstName(), staff.getDate_of_birth(), staff.getDepartmentId(), staff.getOfficeNo(), staff.getSalary(), staff.getJobTitle(), staff.getGender(), staff.getContactNumber());
+	} catch (RuntimeException e)
+	{	
+		staff.setErrorMsg(e.getMessage());
+		staff.setOpreationName("addStaff");
+	}
     return "resultStaff";
     }
 
@@ -174,7 +234,13 @@ public class WebController {
 
     @PostMapping("/deleteStaff")
     public String deleteStaffSubmit(@ModelAttribute Staff staff) {
+	try{
         jdbcTemplate.update("delete from " + prefix + ".staff where eid = ?", staff.getEid());
+	} catch (RuntimeException e)
+	{	
+		staff.setErrorMsg(e.getMessage());
+		staff.setOpreationName("deleteStaff");
+	}
         return "deleteStaffResult";
     }
 
@@ -186,7 +252,13 @@ public class WebController {
 
     @PostMapping("/updateStaff")
     public String updateStaffSubmit(@ModelAttribute Staff staff) {
+	try{
         jdbcTemplate.update("update " + prefix + ".staff set lastName = ?, firstName = ?, status = ?, departmentId = ?, officeNo = ?, salary = ?, jobTitle = ?, gender = ?, contactNumber = ? where eid = ?", staff.getLastName(), staff.getFirstName(), staff.getDepartmentId(), staff.getOfficeNo(), staff.getSalary(), staff.getJobTitle(), staff.getGender(), staff.getContactNumber(), staff.getEid());
+	} catch (RuntimeException e)
+	{	
+		staff.setErrorMsg(e.getMessage());
+		staff.setOpreationName("updateStaff");
+	}
         return "updateStaffResult";
     }
     
@@ -198,7 +270,13 @@ public class WebController {
 
     @PostMapping("/addPharmacist")
     public String pharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+	try{
         jdbcTemplate.update("insert into " + prefix + ".pharmacist values (?,?,?,?,to_date(?,'YYYY-MM-DD'),?)", pharmacist.getPharmacist_id(), pharmacist.getDepartmentId(), pharmacist.getLastName(), pharmacist.getFirstName(), pharmacist.getDate_of_birth(), pharmacist.getOfficeNo());
+	} catch (RuntimeException e)
+	{	
+		pharmacist.setErrorMsg(e.getMessage());
+		pharmacist.setOpreationName("addPharmacist");
+	}
     return "resultPharmacist";
     }
 
@@ -210,7 +288,13 @@ public class WebController {
 
     @PostMapping("/deletePharmacist")
     public String deletePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+	try{
         jdbcTemplate.update("delete from " + prefix + ".pharmacist where pharamacist_id = ?", pharmacist.getPharmacist_id());
+	} catch (RuntimeException e)
+	{	
+		pharmacist.setErrorMsg(e.getMessage());
+		pharmacist.setOpreationName("deletePharmacist");
+	}
         return "deletePharmacistResult";
     }
     
@@ -222,7 +306,13 @@ public class WebController {
     
     @PostMapping("/updatePharmacist")
     public String updatePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
+	try{
         jdbcTemplate.update("update " + prefix + ".pharmacist set lastName = ?, firstName = ?, departmentId = ?, officeNo = ? where pharamacist_id = ?", pharmacist.getLastName(), pharmacist.getFirstName(), pharmacist.getDepartmentId(), pharmacist.getDate_of_birth(), pharmacist.getOfficeNo(), pharmacist.getPharmacist_id());
+	} catch (RuntimeException e)
+	{	
+		pharmacist.setErrorMsg(e.getMessage());
+		pharmacist.setOpreationName("updatePharmacist");
+	}
         return "updatePharmacistResult";
     }
 
@@ -241,7 +331,13 @@ public class WebController {
     @PostMapping("/addTreatmentRecord")
     public String treatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	// TODO add db query here.
+	try{
     	jdbcTemplate.update("insert into " + prefix + ".treatmentRecord values (?,?,?,to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),?,?,?)", treatmentRecord.getAid(), treatmentRecord.getPid(), treatmentRecord.getVisitReason(), treatmentRecord.getVisitDate(), treatmentRecord.getInitialHospitalizedDate(), treatmentRecord.getExpectedDischargeDate(), treatmentRecord.getDischargeDate(), treatmentRecord.getHospitalizedRoomNo(), treatmentRecord.getTreatmentMethod(), treatmentRecord.getDid());
+	} catch (RuntimeException e)
+	{	
+		treatmentRecord.setErrorMsg(e.getMessage());
+		treatmentRecord.setOpreationName("addTreatmentRecord");
+	}
  	return "resultTreatmentRecord";
     }
     
@@ -252,9 +348,15 @@ public class WebController {
     }
     
     @PostMapping("/updateTreatmentRecord")
-    public String updatetreatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
+    public String updateTreatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	// TODO add db query here.
+	try{
     	jdbcTemplate.update("update " + prefix + ".treatmentRecord set initialHospitalizedDate = to_date(?,'YYYY-MM-DD'), expectedDischargeDate = to_date(?,'YYYY-MM-DD'), dischargeDate = to_date(?,'YYYY-MM-DD'), hospitalizedRoomNo = ?, treatmentMethod = ?, did = ? where aid = ?", treatmentRecord.getInitialHospitalizedDate(), treatmentRecord.getExpectedDischargeDate(), treatmentRecord.getDischargeDate(), treatmentRecord.getHospitalizedRoomNo(), treatmentRecord.getTreatmentMethod(), treatmentRecord.getDid(), treatmentRecord.getAid());
+	} catch (RuntimeException e)
+	{	
+		treatmentRecord.setErrorMsg(e.getMessage());
+		treatmentRecord.setOpreationName("updateTreatmentRecord");
+	}
  	return "updateTreatmentRecordResult";
     }
 
@@ -271,7 +373,13 @@ public class WebController {
     @PostMapping("/addCashierData")
     public String addCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
 	// TODO add db query here.
+	try{
     	jdbcTemplate.update("insert into " + prefix + ".cashiersData values (?,?,?,to_date(?,'YYYY-MM-DD'),?,to_date(?,'YYYY-MM-DD'),?)", cashiersData.getAid(), cashiersData.getPid(), cashiersData.getDueAmount(), cashiersData.getDueDate(), cashiersData.getStatus(), cashiersData.getPaymentDate(), cashiersData.getEid());
+	} catch (RuntimeException e)
+	{	
+		cashiersData.setErrorMsg(e.getMessage());
+		cashiersData.setOpreationName("addCashierData");
+	}
  	return "addCashierDataResult";
     }
     
@@ -285,7 +393,13 @@ public class WebController {
     @PostMapping("/updateCashierData")
     public String updateCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
 	// TODO add db query here.
+	try{
     	jdbcTemplate.update("update " + prefix + ".cashiersData set dueAmount = ?, dueDate = to_date(?,'YYYY-MM-DD'), status = ?, paymentDate = to_date(?,'YYYY-MM-DD'), eid = ? where aid = ?", cashiersData.getDueAmount(), cashiersData.getDueDate(), cashiersData.getStatus(), cashiersData.getPaymentDate(), cashiersData.getEid(), cashiersData.getAid());
+	} catch (RuntimeException e)
+	{	
+		cashiersData.setErrorMsg(e.getMessage());
+		cashiersData.setOpreationName("updateCashierData");
+	}
  	return "updateCashierDataResult";
     }
 
@@ -302,7 +416,13 @@ public class WebController {
     @PostMapping("/updateDepartment")
     public String updateDepartmentSubmit(@ModelAttribute Department  department) {
 	// TODO add db query here.
+	try{
     	jdbcTemplate.update("update " + prefix + ".department set name = ?, buildingName = ?, officeNo = ? where departmentId = ", department.getName(), department.getBuildingName(), department.getOfficeNo(), department.getDepartmentId());
+	} catch (RuntimeException e)
+	{	
+		department.setErrorMsg(e.getMessage());
+		department.setOpreationName("updateDepartment");
+	}
  	return "updateDepartmentResult";
     }
 
@@ -315,6 +435,7 @@ public class WebController {
     @PostMapping("/query1")
     public String query1Submit(@ModelAttribute Patient patient, Model model) {
         //TODO query to check result, if found return "query1ResultFound", if not return "query1ResultNotFound";
+	
     	List<Query1result> query1result = this.jdbcTemplate.query(
     	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from dmcccccc.patient inner join dmcccccc.treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
     	new RowMapper<Query1result>() {
@@ -333,6 +454,7 @@ public class WebController {
     			return result;
     		}
     	 }, patient.getFirstName(), patient.getLastName(), patient.getDate_of_birth());
+	
     	
     	if(query1result.size() == 0)
     		return "query1ResultNotFound";

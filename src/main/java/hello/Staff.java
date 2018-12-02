@@ -14,6 +14,16 @@ public class Staff {
 	private String gender;
 	private String contactNumber;
 	
+	// Used to record exception info if necessary
+	private String errorMsg;
+	private String opreationName;
+
+	public Staff(){ errorMsg = "No errors occurred.";};
+	
+	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+	public String getErrorMsg() {return errorMsg;} 
+	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
+	
 	public int getEid()
 	{
 		return eid;

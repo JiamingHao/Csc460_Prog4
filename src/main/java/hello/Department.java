@@ -5,6 +5,16 @@ public class Department {
 	private String name;
 	private String buildingName;
 	private int officeNo;
+	
+	// Used to record exception info if necessary
+	private String errorMsg;
+	private String opreationName;
+
+	public Department(){ errorMsg = "No errors occurred.";};
+	
+	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+	public String getErrorMsg() {return errorMsg;} 
+	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
 
     public int getDepartmentId()
     {

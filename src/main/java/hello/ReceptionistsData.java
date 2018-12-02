@@ -7,6 +7,16 @@ public class ReceptionistsData {
     private int pid;
     private int eid;
     private String date;
+    
+    // Used to record exception info if necessary
+    private String errorMsg;
+    private String opreationName;
+
+    public ReceptionistsData(){ errorMsg = "No errors occurred.";};
+	
+    public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+    public String getErrorMsg() {return errorMsg;} 
+    public void setOpreationName(String opreationName){this.opreationName = opreationName;}
 
     public int getAid(){
         return aid;

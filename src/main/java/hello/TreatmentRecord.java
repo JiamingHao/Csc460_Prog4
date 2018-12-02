@@ -13,6 +13,16 @@ public class TreatmentRecord {
 	private int hospitalizedRoomNo;
 	private String treatmentMethod;
 	private int did;
+	
+	// Used to record exception info if necessary
+	private String errorMsg;
+	private String opreationName;
+
+	public TreatmentRecord(){errorMsg = "No errors occurred.";};
+	
+	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+	public String getErrorMsg() {return errorMsg;} 
+	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
 
 	public int getAid(){
 		return aid;

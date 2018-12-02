@@ -10,6 +10,15 @@ public class CashiersData {
     private String status;
     private String paymentDate;
     private int eid;
+	
+    // Used to record exception info if necessary
+    private String errorMsg;
+    private String opreationName;
+
+    public CashiersData(){ errorMsg = "No errors occurred.";};
+    public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+    public String getErrorMsg() {return errorMsg;} 
+    public void setOpreationName(String opreationName){this.opreationName = opreationName;}
 
     public int getAid() { return aid; }
 
