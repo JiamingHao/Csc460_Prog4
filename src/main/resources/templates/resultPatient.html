@@ -7,28 +7,32 @@
 </head>
 <body onload="checkError()">
     <h1>Patient Added</h1>
-    <p th:text="'Pid: ' + ${patient.pid}" />
+    <p th:text="'Pid: ' + ${patient.pid}" id="pid"/>
     <p th:text="'First Name: ' + ${patient.firstName}" />
     <p th:text="'Last Name: ' + ${patient.lastName}" />
     <p th:text="'Gender: ' + ${patient.gender}" />
     <p th:text="'Date of Birth: ' + ${patient.date_of_birth}" />
     <p th:text="'Address: ' + ${patient.address}" />
     <p th:text="'Contact Number: ' + ${patient.contactNumber}" />
+    <p th:text="'Error Log: ' + ${patient.errorMsg}" id="errorMsg"/>
     <a href="/addPatient">Add another patient</a> <br>
     <a href="/index.html">Home</a>
 
 <script>
 function checkError()
 {
-	var result = "<h1>";
-	if(${patient.errorMsg} === "")
+	//var errorMsg = ${patient.errorMsg};
+	/*var result = "<h1>";
+	if(document.getElementById("errorMsg").value !== "")
 	{
-		console.log("Debug");
-		result = result + ${patient.errorMsg} + "</h1>";
+		//console.log("Debug");
+		result = result + document.getElementById("errorMsg").value + "</h1>";
 		document.write(result);
-	}
- 	console.log("Here");
-	alert("Page is loaded");
+	}*/
+ 	//console.log(errorMsg);
+	document.write("<h1> Sorry, there is an error occurred. </h1>" + "<br><p> Detais:" + document.getElementById("errorMsg").innerHTML + "</p>"
++ "<a href=\"/index.html\">Home</a>");
+	//alert("Page is loaded");
 
 }
 </script>
