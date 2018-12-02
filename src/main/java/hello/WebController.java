@@ -268,17 +268,6 @@ public class WebController {
  	return "addCashierDataResult";
     }
     
-    @GetMapping("/addCashierData")
-    public String addCashierDataForm(Model model){
-	model.addAttribute("cashiersData", new CashiersData());
-	return "addCashierData";
-    }
-    
-    @PostMapping("/addCashierData")
-    public String addCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
-	// TODO add db query here.
- 	return "addCashierDataResult";
-    }
     
     @GetMapping("/updateCashierData")
     public String updateCashierDataForm(Model model){
