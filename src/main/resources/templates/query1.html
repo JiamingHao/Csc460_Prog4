@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>Please check-in.</h1>
-    <form action="#" th:action="@{/query1}" th:object="${Query1result}" method="post">
+    <form action="#" th:action="@{/query1}" th:object="${query1result}" method="post">
         <p>First Name: <input type="text" th:field="*{firstName}" required/></p>
         <p>Last Name: <input type="text" th:field="*{lastName}" required/></p>
-        <p>Date of Birth: <input id="datePickerId" type="date" name="dob" th:field="*{date_of_birth}" required> </p>
+        <p>Date of Birth: <input id="datePickerId" type="date" th:field="*{date_of_birth}" required> </p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 </body>

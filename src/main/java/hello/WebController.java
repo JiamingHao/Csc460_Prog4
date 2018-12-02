@@ -474,11 +474,5 @@ public class WebController {
         return "query2Result";
     }
 
-    @GetMapping("/query3")
-    public String query3(Model model) {
-        // TODO need works add attribute of array (maybe) of treatmentrecord
-    }
 
-        return "query3";
-    }
-
+}
