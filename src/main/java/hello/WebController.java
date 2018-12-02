@@ -268,18 +268,6 @@ public class WebController {
  	return "addCashierDataResult";
     }
     
-    @GetMapping("/addCashierData")
-    public String addCashierDataForm(Model model){
-	model.addAttribute("cashiersData", new CashiersData());
-	return "addCashierData";
-    }
-    
-    @PostMapping("/addCashierData")
-    public String addCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
-	// TODO add db query here.
- 	return "addCashierDataResult";
-    }
-    
     @GetMapping("/updateCashierData")
     public String updateCashierDataForm(Model model){
 	model.addAttribute("cashiersData", new CashiersData());
@@ -317,9 +305,31 @@ public class WebController {
     }
 
     @PostMapping("/query1")
-    public String query1Submit(@ModelAttribute Patient patient) {
+    public String query1Submit(@ModelAttribute Patient patient, Model model) {
         //TODO query to check result, if found return "query1ResultFound", if not return "query1ResultNotFound";
-        return "query1ResultFound";
+    	List<Query1result> query1result = this.jdbcTemplate.query(
+    	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from dmcccccc.patient inner join dmcccccc.treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
+    	new RowMapper<Query1result>() {
+    		public Query1result mapRow(ResultSet rs, int rowNum) throws SQLException {
+    			Query1result result = new Query1result();
+    			result.setPid(rs.getInt("pid"));
+    			result.setFirstName(rs.getString("firstName"));
+    			result.setLastName(rs.getString("lastName"));
+    			result.setGender(rs.getString("gender"));
+    			result.setDate_of_birth(rs.getString("date_of_birth"));
+    			result.setVisitDate(rs.getString("visitDate"));
+    			result.setVisitReason(rs.getString("visitReason"));
+    			result.setTreatmentMethod(rs.getString("treatmentMethod"));
+    			result.setDid(rs.getInt("did"));
+    			model.addAttribute("result", result);
+    			return result;
+    		}
+    	 }, patient.getFirstName(), patient.getLastName(), patient.getDate_of_birth());
+    	
+    	if(query1result.size() == 0)
+    		return "query1ResultNotFound";
+    	else
+    		return "query1ResultFound";
     }
 
 }
