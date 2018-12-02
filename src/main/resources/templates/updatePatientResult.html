@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="checkError()">
     <h1>Patient Updated</h1>
     <p th:text="'Pid of the patient updated: ' + ${patient.pid}" />
     <p th:text="'First Name: ' + ${patient.firstName}" />
@@ -13,7 +13,21 @@
     <p th:text="'Gender: ' + ${patient.gender}" />
     <p th:text="'Address: ' + ${patient.address}" />
     <p th:text="'Contact Number: ' + ${patient.contactNumber}" />
+    <p th:text="'Error Log: ' + ${patient.errorMsg}" id="errorMsg"/>
     <a href="/updatePatient">Update another patient</a> <br>
     <a href="/index.html">Home</a>
+
+<script>
+function checkError()
+{
+	if(document.getElementById("errorMsg").innerHTML !== "Error Log: No errors occurred.")
+	{
+		console.log(document.getElementById("errorMsg").innerHTML);
+		document.write("<h1> Sorry, there is an error occurred. </h1>" + "<br><p> Detais:" + document.getElementById("errorMsg").innerHTML + "</p>"
++ "<a href=\"/index.html\">Home</a>");
+	}
+
+}
+</script>
 </body>
 </html>

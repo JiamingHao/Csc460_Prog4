@@ -5,10 +5,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="checkError()">
     <h1>Staff Deleted</h1>
     <p th:text="'Eid: ' + ${staff.eid} + ' has been deleted successfully.'" />
+    <p th:text="'Error Log: ' + ${staff.errorMsg}" id="errorMsg"/>
     <a href="/deleteStaff">Delete another staff</a> <br>
     <a href="/index.html">Home</a>
+
+<script>
+function checkError()
+{
+	if(document.getElementById("errorMsg").innerHTML !== "Error Log: No errors occurred.")
+	{
+		console.log(document.getElementById("errorMsg").innerHTML);
+		document.write("<h1> Sorry, there is an error occurred. </h1>" + "<br><p> Detais:" + document.getElementById("errorMsg").innerHTML + "</p>"
++ "<a href=\"/index.html\">Home</a>");
+	}
+
+}
+</script>
 </body>
 </html>
