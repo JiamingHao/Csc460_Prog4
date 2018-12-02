@@ -43,7 +43,14 @@ public class WebController {
 
     @PostMapping("/addPatient")
     public String patientSubmit(@ModelAttribute Patient patient) {
+	try{
         jdbcTemplate.update("insert into " + prefix + ".patient (pid, lastName, firstName, gender, date_of_birth, address, contactNumber) values (?, ?, ?, ?, to_date(?,'YYYY-MM-DD'), ?, ?)", patient.getPid(), patient.getLastName(), patient.getFirstName(), patient.getGender(), patient.getDate_of_birth(), patient.getAddress(), patient.getContactNumber());
+	} catch (SQLException e)
+	{	
+		patient.setErrorMsg(e.getMessage());
+		patient.setOpreationName("addPatient");
+	}
+
         return "resultPatient";
     }
 

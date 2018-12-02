@@ -11,7 +11,17 @@ public class Patient {
 	private String date_of_birth;
 	private String address;
 	private String contactNumber;
+	
+	// Used to record exception info if necessary
+	private String errorMsg;
+	private String opreationName;
 
+	public Patient(){ errorMsg = "";};
+	
+	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+	public String getErrorMsg() {return errorMsg;} 
+	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
+	public String getOpreationName() { return opreationName;}
 
 	public int getPid(){
 		return pid;
