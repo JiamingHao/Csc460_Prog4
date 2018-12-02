@@ -23,11 +23,12 @@ function checkError()
 	var result = "<h1>";
 	if(${patient.errorMsg} === "")
 	{
+		console.log("Debug");
 		result = result + ${patient.errorMsg} + "</h1>";
 		document.write(result);
 	}
-
-	
+ 	console.log("Here");
+	alert("Page is loaded");
 
 }
 </script>
