@@ -428,7 +428,7 @@ public class WebController {
 
     @GetMapping("/query1")
     public String query1Form(Model model) {
-        model.addAttribute("patient", new Patient());
+        model.addAttribute("query1result", new Query1result());
         return "query1";
     }
 
@@ -462,4 +462,23 @@ public class WebController {
     		return "query1ResultFound";
     }
 
-}
+    @GetMapping("/query2")
+    public String query2Form(Model model) {
+        model.addAttribute("department", new Department());
+        return "query2";
+    }
+
+    @PostMapping("/query2")
+    public String query2Submit(@ModelAttribute Department department, Model model) {
+        // TODO query2 add attribute of array of doctors,if department name unmatch throw error
+        return "query2Result";
+    }
+
+    @GetMapping("/query3")
+    public String query3(Model model) {
+        // TODO need works add attribute of array (maybe) of treatmentrecord
+    }
+
+        return "query3";
+    }
+
