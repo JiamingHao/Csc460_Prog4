@@ -503,4 +503,9 @@ public class WebController {
         	else
         		return "query3Result";
     }
+    
+    // give the name and DOB of a receptionist, search for the most frequently patient he accessed, display the pid, full name, and the medicine name that the patient most frequently bought.
+    // required: staff's firstName, lastName, date_of_birst
+    // return: pid , firstName, lastName, medicineName
+    // select patient.pid as pid, firstName, lastName, medicineName from dmcccccc.patient, dmcccccc.pharmacistsData, (select pid as ppid from dmcccccc.receptionistsData, dmcccccc.staff where firstName = 'query4' and lastName = 'query4' and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc;
 }
