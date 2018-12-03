@@ -450,7 +450,7 @@ public class WebController {
     			result.setLastName(rs.getString("lastName"));
     			result.setGender(rs.getString("gender"));
     			result.setDate_of_birth(rs.getString("date_of_birth").split(" ")[0]);
-    			result.setVisitDate(rs.getString("visitDate").spilt(" ")[0]);
+    			result.setVisitDate(rs.getString("visitDate").split(" ")[0]);
     			result.setVisitReason(rs.getString("visitReason"));
     			result.setTreatmentMethod(rs.getString("treatmentMethod"));
     			result.setDid(rs.getInt("did"));
