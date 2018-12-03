@@ -12,7 +12,7 @@
     	<p>New First Name: <input type="text" th:field="*{firstName}" required/></p>
         <p>New Last Name: <input type="text" th:field="*{lastName}" required/></p>
         <p>New Department ID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{departmentId}"/></p>
-        <p>New Room Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{roomNo}" /></p>
+        <p>New Room Number: <input type="number"  min="1" max="300" th:field="*{roomNo}" /></p>
 	<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 <script>
