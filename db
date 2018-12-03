@@ -1,0 +1,48 @@
+create table dmcccccc.doctor(did integer not null, lastName varchar(25) not null, firstName varchar(25) not null, date_of_birth date not null, status varchar(25), departmentId integer, officeNo integer, PRIMARY KEY(did), UNIQUE(officeNo));
+create table dmcccccc.patient(pid integer not null, lastName varchar(25) not null, firstName varchar(25) not null, gender varchar(10), date_of_birth date not null, address varchar(50), contactNumber varchar(25), PRIMARY KEY(pid));
+create table dmcccccc.nurse(nid integer not null, lastName varchar(25) not null, firstName varchar(25) not null, date_of_birth date not null, departmentId integer, roomNo integer, PRIMARY KEY(nid));
+create table dmcccccc.pharmacist(pharmacist_id integer not null, departmentId integer, lastName varchar(25) not null, firstName varchar(25) not null, date_of_birth date not null, officeNo integer, PRIMARY KEY(pharmacist_id));
+create table dmcccccc.cashier(eid integer not null, lastName varchar(25) not null, firstName varchar(25) not null, date_of_birth date not null, departmentId integer, officeNo integer, salary int, jobTitle varchar(25), gender varchar(10), contactNumber varchar(25), PRIMARY KEY(eid));
+create table dmcccccc.receptionist(eid integer not null, lastName varchar(25) not null, firstName varchar(25) not null, date_of_birth date not null, departmentId integer, officeNo integer, salary int, jobTitle varchar(25), gender varchar(10), contactNumber varchar(25), PRIMARY KEY(eid));
+create table dmcccccc.staff(eid integer not null, lastName varchar(25) not null, firstName varchar(25) not null, date_of_birth date not null, departmentId integer, officeNo integer, salary int, jobTitle varchar(25), gender varchar(10), contactNumber varchar(25), PRIMARY KEY(eid));
+create table dmcccccc.treatmentRecord(aid integer not null, pid integer not null, visitReason varchar(50) not null, visitDate date not null, initialHospitalizedDate date, expectedDischargeDate date, dischargeDate date, hospitalizedRoomNo integer, treatmentMethod varchar(50), did integer, PRIMARY KEY(aid));
+create table dmcccccc.cashiersData(aid integer not null, pid integer not null, dueAmount number not null, dueDate date not null, status varchar(25) not null, paymentDate date, eid integer not null, PRIMARY KEY(aid));
+create table dmcccccc.receptionistsData(aid integer not null, pid integer not null, eid integer not null, "date" date not null);
+create table dmcccccc.pharmacistsData(pharmacistId integer not null, pid integer not null, medicineName varchar(50) not null, numberOfDays integer not null, PRIMARY KEY(pharmacistId, pid, medicineName));
+create table dmcccccc.room(roomNo integer not null, buildingName varchar(50) not null, type varchar(25) not null, capacity integer not null, PRIMARY KEY(roomNo, buildingName));
+create table dmcccccc.department(departmentId integer not null, name varchar(50) not null, buildingName varchar(50) not null, officeNo integer not null, PRIMARY KEY(departmentId));
+create table dmcccccc.building(name varchar(50) not null, address varchar(50) not null, PRIMARY KEY(name));
+
+
+
+grant select, insert, update, delete on dmcccccc.doctor to public;
+grant select, insert, update, delete on dmcccccc.patient to public;
+grant select, insert, update, delete on dmcccccc.nurse to public;
+grant select, insert, update, delete on dmcccccc.pharmacist to public;
+grant select, insert, update, delete on dmcccccc.cashier to public;
+grant select, insert, update, delete on dmcccccc.receptionist to public;
+grant select, insert, update, delete on dmcccccc.staff to public;
+grant select, insert, update, delete on dmcccccc.treatmentRecord to public;
+grant select, insert, update, delete on dmcccccc.cashiersData to public;
+grant select, insert, update, delete on dmcccccc.receptionistsData to public;
+grant select, insert, update, delete on dmcccccc.pharmacistsData to public;
+grant select, insert, update, delete on dmcccccc.room to public;
+grant select, insert, update, delete on dmcccccc.department to public;
+grant select, insert, update, delete on dmcccccc.building to public;
+
+
+
+drop table dmcccccc.doctor;
+drop table dmcccccc.patient;
+drop table dmcccccc.nurse;
+drop table dmcccccc.pharmacist;
+drop table dmcccccc.cashier;
+drop table dmcccccc.receptionist;
+drop table dmcccccc.staff;
+drop table dmcccccc.treatmentRecord;
+drop table dmcccccc.cashiersData;
+drop table dmcccccc.receptionistsData;
+drop table dmcccccc.pharmacistsData;
+drop table dmcccccc.room;
+drop table dmcccccc.department;
+drop table dmcccccc.building;
