@@ -507,5 +507,35 @@ public class WebController {
     // give the name and DOB of a receptionist, search for the most frequently patient he accessed, display the pid, full name, and the medicine name that the patient most frequently bought.
     // required: staff's firstName, lastName, date_of_birst
     // return: pid , firstName, lastName, medicineName
-    // select patient.pid as pid, firstName, lastName, medicineName from dmcccccc.patient, dmcccccc.pharmacistsData, (select pid as ppid from dmcccccc.receptionistsData, dmcccccc.staff where firstName = 'query4' and lastName = 'query4' and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc;
+    // select patient.pid as pid, firstName, lastName, medicineName from dmcccccc.patient, dmcccccc.pharmacistsData, (select pid as ppid from dmcccccc.receptionistsData, dmcccccc.staff where firstName = ? and lastName = ? and data_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc;
+    
+    @GetMapping("/query4")
+    public String query4Form(Model model) {
+        model.addAttribute("staff", new Staff());
+        return "query4";
+    }
+
+    @PostMapping("/query4")
+    public String query4Submit(@ModelAttribute Staff staff, Model model) {
+    	List<Query4result> query4result = this.jdbcTemplate.query(
+    		"select patient.pid as pid, firstName, lastName, medicineName from " + prefix + ".patient, " + prefix + ".pharmacistsData, (select pid as ppid from " + prefix + ".receptionistsData, " + prefix + ".staff where firstName = ? and lastName = ? and data_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc",
+    	   	new RowMapper<Query4result>() {   			
+				public Query4result mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Query4result rowResult = new Query4result();
+					rowResult.setPid(rs.getInt("pid"));
+					rowResult.setFirstName(rs.getString("firstName"));
+					rowResult.setLastName(rs.getString("lastName"));
+					rowResult.setMedicineName(rs.getString("medicineName"));
+	    			return rowResult;
+				}		
+    		}, staff.getFirstName(), staff.getLastName(), staff.getDate_of_birth());
+    		
+    	if(query4result.size() == 0)
+    		return "query4ResultNotFound";
+    	else
+    	{
+    		model.addAttribute("result", query4result.get(0));
+    		return "query4Result";
+    	}
+    }
 }
