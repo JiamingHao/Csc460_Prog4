@@ -253,7 +253,7 @@ public class WebController {
     @PostMapping("/updateStaff")
     public String updateStaffSubmit(@ModelAttribute Staff staff) {
 	try{
-        jdbcTemplate.update("update " + prefix + ".staff set lastName = ?, firstName = ?, status = ?, departmentId = ?, officeNo = ?, salary = ?, jobTitle = ?, gender = ?, contactNumber = ? where eid = ?", staff.getLastName(), staff.getFirstName(), staff.getDepartmentId(), staff.getOfficeNo(), staff.getSalary(), staff.getJobTitle(), staff.getGender(), staff.getContactNumber(), staff.getEid());
+        jdbcTemplate.update("update " + prefix + ".staff set lastName = ?, firstName = ?,  departmentId = ?, officeNo = ?, salary = ?, jobTitle = ?, gender = ?, contactNumber = ? where eid = ?", staff.getLastName(), staff.getFirstName(), staff.getDepartmentId(), staff.getOfficeNo(), staff.getSalary(), staff.getJobTitle(), staff.getGender(), staff.getContactNumber(), staff.getEid());
 	} catch (RuntimeException e)
 	{	
 		staff.setErrorMsg(e.getMessage());
