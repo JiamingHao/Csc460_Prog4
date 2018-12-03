@@ -1,18 +1,20 @@
 package hello;
 
 public class Query2result {
-	private String departmentName; // in department calss it is called "name"
+    
+    private String departmentName; // in department calss it is called "name"
     private int departmentId; // both department and doctor
     private int officeNo;
     private String lastName;
     private String firstName;
     private String buildingName;
-	
-	// Used to record exception info if necessary
-	private String errorMsg;
-	private String opreationName;
+    private String fullName;
+		
+    // Used to record exception info if necessary
+    private String errorMsg; 
+    private String opreationName;
 
-	public Query2result(){ errorMsg = "No errors occurred.";};
+    public Query2result(){ errorMsg = "No errors occurred.";};
 
     public String getDepartmentName()
     {
@@ -58,7 +60,10 @@ public class Query2result {
     {
         this.buildingName = buildingName;
     }
-	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
-	public String getErrorMsg() {return errorMsg;} 
-	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
+    
+    public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+    public String getErrorMsg() {return errorMsg;} 
+    public void setOpreationName(String opreationName){this.opreationName = opreationName;}
+
+    public String getFullName() {return firstName + " " + lastName;}
 }
