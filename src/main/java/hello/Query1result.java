@@ -10,6 +10,7 @@ public class Query1result {
 	private String visitReason;
 	private String treatmentMethod;
 	private int did;
+	private String fullName;
 	
 	// Used to record exception info if necessary
 	private String errorMsg;
@@ -75,6 +76,11 @@ public class Query1result {
 	public void setDid(int did) {
 		this.did = did;
 	}
+
+	public String getFullName()
+	{
+		return this.firstName + " " + this.lastName;
+	}	
 	
 	
 }
