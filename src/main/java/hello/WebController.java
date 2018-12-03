@@ -21,6 +21,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+/*+-----------------------------------------------------------------
+||
+|| Class WebController	
+||
+||	Author: Group members
+||
+||      Purpose: Map to the get and post requests sent
+||               by the html pages. Get Mapping will create
+||               corresponding objects and bind them to models,
+||               post mapping will run querirs in the database
+||               using jdbc and return results if necessary.
+||               
+||	Inherits From: None
+||	Interfaces: None
+|+-------------------------------------------------------------------
+||
+||	Constants: None
+|+-------------------------------------------------------------------
+||	Constructors: public postConstruct()
+||
+||	Class Methods: None
+||
+||	Inst.Methods: Groups of get and post mapping methods serve
+||                    for different requests.
+||
+||
+++--------------------------------------------------------------------*/
+
 @Controller
 public class WebController {
 
@@ -35,6 +63,7 @@ public class WebController {
 
     @PostConstruct
     private void postConstruct() {
+	// Create the jdbcTemplate object to be used in queries.
         jdbcTemplate = new JdbcTemplate(dataSource);
 	prefix = "dmcccccc";
     }
@@ -44,7 +73,8 @@ public class WebController {
         model.addAttribute("patient", new Patient());
         return "addPatient";
     }
-
+    
+    // Add a new patient record in the db.
     @PostMapping("/addPatient")
     public String patientSubmit(@ModelAttribute Patient patient) {
 	try{
@@ -56,6 +86,7 @@ public class WebController {
 		* object as record.
 		*/
 		patient.setErrorMsg(e.getMessage());
+		// Record the opreation name casuing the exception
 		patient.setOpreationName("addPatient");
 	}
 
@@ -68,6 +99,7 @@ public class WebController {
         return "deletePatient";
     }
 
+    // Delete a patient record in the db.
     @PostMapping("/deletePatient")
     public String deletePatientSubmit(@ModelAttribute Patient patient) {
 	try{
@@ -86,7 +118,8 @@ public class WebController {
         model.addAttribute("patient", new Patient());
         return "updatePatient";
     }
-
+    
+    // Update an existing patient record in the db.
     @PostMapping("/updatePatient")
     public String updatePatientSubmit(@ModelAttribute Patient patient) {
 	try{
@@ -107,7 +140,8 @@ public class WebController {
     model.addAttribute("doctor", new Doctor());
     return "addDoctor";
     }
-
+    
+    // Add a doctor record to the db.
     @PostMapping("/addDoctor")
     public String doctorSubmit(@ModelAttribute Doctor doctor) {
 	try{
@@ -125,7 +159,8 @@ public class WebController {
         model.addAttribute("doctor", new Doctor());
         return "deleteDoctor";
     }
-
+    
+    // Delete an existing doctor record in the db.
     @PostMapping("/deleteDoctor")
     public String deleteDoctorSubmit(@ModelAttribute Doctor doctor) {
 	try{
@@ -144,6 +179,7 @@ public class WebController {
         return "updateDoctor";
     }
 
+    // Update an existing doctor record in the db.	
     @PostMapping("/updateDoctor")
     public String updateDoctorSubmit(@ModelAttribute Doctor doctor) {
 	try{
@@ -163,7 +199,8 @@ public class WebController {
     model.addAttribute("nurse", new Nurse());
     return "addNurse";
     }
-
+    
+    // Add a nurse record in the db.
     @PostMapping("/addNurse")
     public String nurseSubmit(@ModelAttribute Nurse nurse) {
 	try{
@@ -181,7 +218,8 @@ public class WebController {
         model.addAttribute("nurse", new Nurse());
         return "deleteNurse";
     }
-
+    
+    // Delete an existing doctor in the db.
     @PostMapping("/deleteNurse")
     public String deleteNurseSubmit(@ModelAttribute Nurse nurse) {
 	try{
@@ -200,6 +238,7 @@ public class WebController {
         return "updateNurse";
     }
 
+    // Update an existing nurse record in the db.
     @PostMapping("/updateNurse")
     public String updateNurseSubmit(@ModelAttribute Nurse nurse) {
 	try{
@@ -217,7 +256,8 @@ public class WebController {
     model.addAttribute("staff", new Staff());
     return "addStaff";
     }
-
+    
+    // Add a staff record in the db.
     @PostMapping("/addStaff")
     public String staffSubmit(@ModelAttribute Staff staff) {
 	try{
@@ -235,7 +275,8 @@ public class WebController {
         model.addAttribute("staff", new Staff());
         return "deleteStaff";
     }
-
+    
+    // Delete an existing staff record in the db	  
     @PostMapping("/deleteStaff")
     public String deleteStaffSubmit(@ModelAttribute Staff staff) {
 	try{
@@ -254,6 +295,7 @@ public class WebController {
         return "updateStaff";
     }
 
+    // Update an existing staff record in the db
     @PostMapping("/updateStaff")
     public String updateStaffSubmit(@ModelAttribute Staff staff) {
 	try{
@@ -272,6 +314,7 @@ public class WebController {
     return "addPharmacist";
     }
 
+    // Add a pharmacist record in the db.
     @PostMapping("/addPharmacist")
     public String pharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
 	try{
@@ -290,6 +333,7 @@ public class WebController {
         return "deletePharmacist";
     }
 
+    // Delete a pharmacist record in the db.
     @PostMapping("/deletePharmacist")
     public String deletePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
 	try{
@@ -308,6 +352,7 @@ public class WebController {
         return "updatePharmacist";
     }
     
+    // Update an existing pharmacist record in the db.
     @PostMapping("/updatePharmacist")
     public String updatePharmacistSubmit(@ModelAttribute Pharmacist pharmacist) {
 	try{
@@ -325,7 +370,8 @@ public class WebController {
 	model.addAttribute("treatmentRecord", new TreatmentRecord());
 	return "addTreatmentRecord";
     }
-
+    
+    // Add a treatmentRecord in the db.
     @PostMapping("/addTreatmentRecord")
     public String treatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	try{
@@ -344,6 +390,7 @@ public class WebController {
 	return "updateTreatmentRecord";
     }
     
+    // Update an existing treatment Record in the db.
     @PostMapping("/updateTreatmentRecord")
     public String updateTreatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
 	try{
@@ -362,6 +409,7 @@ public class WebController {
 	return "addCashierData";
     }
     
+    // Add a CashierData record in the db.
     @PostMapping("/addCashierData")
     public String addCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
 	try{
@@ -381,6 +429,7 @@ public class WebController {
 	return "updateCashierData";
     }
     
+    // Update an existing CashierData record in the db.
     @PostMapping("/updateCashierData")
     public String updateCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
 	try{
@@ -393,7 +442,7 @@ public class WebController {
  	return "updateCashierDataResult";
     }
 
-    /* TODO Update department room number and building name from the department table.
+    /* Update department room number and building name from the department table.
     In fact, anything in this table can be modified and updated except the DID.
     */
     
@@ -420,7 +469,11 @@ public class WebController {
         model.addAttribute("query1result", new Query1result());
         return "query1";
     }
-
+    /*
+     * Query 1 is used by receptionists to search the patients' record using their first name, last name and DOB.
+     * The query result includes PID, Pname(first name + last name), gender, DOB, the most recent date of visit, the
+     * reason for the last visit, treatment method, and the assigned doctor during the previous visit.
+     */
     @PostMapping("/query1")
     public String query1Submit(@ModelAttribute Patient patient, Model model) {
     	List<Query1result> query1result = this.jdbcTemplate.query(
@@ -442,7 +495,7 @@ public class WebController {
     		}
     	 }, patient.getFirstName(), patient.getLastName(), patient.getDate_of_birth());
 	
-    	
+    	// To see whether the query found something
     	if(query1result.size() == 0)
     		return "query1ResultNotFound";
     	else
@@ -454,10 +507,14 @@ public class WebController {
         model.addAttribute("department", new Department());
         return "query2";
     }
-
+    /*
+     * Query 2 allows users to search the list of doctors based on the department. The user will input 
+     * the department name, then the result should print Doctor's name(first + last name), office number,
+     * and the building name.
+     */
     @PostMapping("/query2")
     public String query2Submit(@ModelAttribute Department department, Model model) {
-        // TODO query2 add attribute of array of doctors,if department name unmatch throw error
+        // query2 add attribute of array of doctors,if department name unmatch throw error
     	List<Query2result> query2result = this.jdbcTemplate.query(
     		"select firstName, lastName, doctor.officeNo as officeNo, buildingName from " + prefix + ".doctor, " + prefix + ".department where doctor.departmentId = department.departmentId and name = ?",
     	   	new RowMapper<Query2result>() {   			
@@ -478,7 +535,11 @@ public class WebController {
     	else
     		return "query2Result";
     }
-    
+    /*
+     * Query 3 lists the patients who are currently hospitalized and expected to be hospitalized more than
+     * 5 days with an outstanding fees to be paid. Print the PID, Pname(first name + last name), number of expected
+     * hospitalized days, room number, and total amount due.
+     */
     @GetMapping("/query3")
     public String query3Form(Model model) {
     	List<Query3result> query3result = this.jdbcTemplate.query(
