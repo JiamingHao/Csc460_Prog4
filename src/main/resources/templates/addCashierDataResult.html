@@ -7,6 +7,7 @@
 </head>
 <body onload="checkError()">
     <h1>Cashier Data Record Added</h1>
+    <p th:text="'AID: ' + ${cashiersData.aid}" />
     <p th:text="'PID: ' + ${cashiersData.pid}" />
     <p th:text="'Due Amount: ' + ${cashiersData.dueAmount}" />
     <p th:text="'Due Date: ' + ${cashiersData.dueDate}" />
