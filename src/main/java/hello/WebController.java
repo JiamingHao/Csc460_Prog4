@@ -320,12 +320,6 @@ public class WebController {
         return "updatePharmacistResult";
     }
 
-    /* TODO add&update patient treatment record.
-    When adding PID, appointment number, reason of visit, and date of visit cannot be left as blank.
-    When updating, everything can be updated except the PID, appointment number, reason of visit, and the date of visit.
-    */
-
-
     @GetMapping("/addTreatmentRecord")
     public String addTreatmentForm(Model model){
 	model.addAttribute("treatmentRecord", new TreatmentRecord());
@@ -334,7 +328,6 @@ public class WebController {
 
     @PostMapping("/addTreatmentRecord")
     public String treatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
-	// TODO add db query here.
 	try{
     	jdbcTemplate.update("insert into " + prefix + ".treatmentRecord values (?,?,?,to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),?,?,?)", treatmentRecord.getAid(), treatmentRecord.getPid(), treatmentRecord.getVisitReason(), treatmentRecord.getVisitDate(), treatmentRecord.getInitialHospitalizedDate(), treatmentRecord.getExpectedDischargeDate(), treatmentRecord.getDischargeDate(), treatmentRecord.getHospitalizedRoomNo(), treatmentRecord.getTreatmentMethod(), treatmentRecord.getDid());
 	} catch (RuntimeException e)
@@ -353,7 +346,6 @@ public class WebController {
     
     @PostMapping("/updateTreatmentRecord")
     public String updateTreatmentSubmit(@ModelAttribute TreatmentRecord  treatmentRecord) {
-	// TODO add db query here.
 	try{
     	jdbcTemplate.update("update " + prefix + ".treatmentRecord set initialHospitalizedDate = to_date(?,'YYYY-MM-DD'), expectedDischargeDate = to_date(?,'YYYY-MM-DD'), dischargeDate = to_date(?,'YYYY-MM-DD'), hospitalizedRoomNo = ?, treatmentMethod = ?, did = ? where aid = ?", treatmentRecord.getInitialHospitalizedDate(), treatmentRecord.getExpectedDischargeDate(), treatmentRecord.getDischargeDate(), treatmentRecord.getHospitalizedRoomNo(), treatmentRecord.getTreatmentMethod(), treatmentRecord.getDid(), treatmentRecord.getAid());
 	} catch (RuntimeException e)
@@ -364,10 +356,6 @@ public class WebController {
  	return "updateTreatmentRecordResult";
     }
 
-    /* TODO add&update cashier record.
-    When adding, only the payment date can be left as blank.
-    The update must not change the PID where as other records should be allowed to modify including the EID.
-    */
     @GetMapping("/addCashierData")
     public String addCashierDataForm(Model model){
 	model.addAttribute("cashiersData", new CashiersData());
@@ -376,7 +364,6 @@ public class WebController {
     
     @PostMapping("/addCashierData")
     public String addCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
-	// TODO add db query here.
 	try{
     	jdbcTemplate.update("insert into " + prefix + ".cashiersData values (?,?,?,to_date(?,'YYYY-MM-DD'),?,to_date(?,'YYYY-MM-DD'),?)", cashiersData.getAid(), cashiersData.getPid(), cashiersData.getDueAmount(), cashiersData.getDueDate(), cashiersData.getStatus(), cashiersData.getPaymentDate(), cashiersData.getEid());
 	} catch (RuntimeException e)
@@ -396,7 +383,6 @@ public class WebController {
     
     @PostMapping("/updateCashierData")
     public String updateCashierDataSubmit(@ModelAttribute CashiersData  cashiersData) {
-	// TODO add db query here.
 	try{
     	jdbcTemplate.update("update " + prefix + ".cashiersData set dueAmount = ?, dueDate = to_date(?,'YYYY-MM-DD'), status = ?, paymentDate = to_date(?,'YYYY-MM-DD'), eid = ? where aid = ?", cashiersData.getDueAmount(), cashiersData.getDueDate(), cashiersData.getStatus(), cashiersData.getPaymentDate(), cashiersData.getEid(), cashiersData.getAid());
 	} catch (RuntimeException e)
@@ -419,7 +405,6 @@ public class WebController {
     
     @PostMapping("/updateDepartment")
     public String updateDepartmentSubmit(@ModelAttribute Department  department) {
-	// TODO add db query here.
 	try{
     	jdbcTemplate.update("update " + prefix + ".department set name = ?, buildingName = ?, officeNo = ? where departmentId = ", department.getName(), department.getBuildingName(), department.getOfficeNo(), department.getDepartmentId());
 	} catch (RuntimeException e)
@@ -438,8 +423,6 @@ public class WebController {
 
     @PostMapping("/query1")
     public String query1Submit(@ModelAttribute Patient patient, Model model) {
-        //TODO query to check result, if found return "query1ResultFound", if not return "query1ResultNotFound";
-	
     	List<Query1result> query1result = this.jdbcTemplate.query(
     	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from dmcccccc.patient inner join dmcccccc.treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
     	new RowMapper<Query1result>() {
@@ -449,7 +432,7 @@ public class WebController {
     			result.setFirstName(rs.getString("firstName"));
     			result.setLastName(rs.getString("lastName"));
     			result.setGender(rs.getString("gender"));
-    			result.setDate_of_birth(rs.getString("date_of_birth").split(" ")[0]);
+    			result.setDate_of_birth(rs.getString("date_of_birth"));
     			result.setVisitDate(rs.getString("visitDate").split(" ")[0]);
     			result.setVisitReason(rs.getString("visitReason"));
     			result.setTreatmentMethod(rs.getString("treatmentMethod"));
@@ -475,8 +458,49 @@ public class WebController {
     @PostMapping("/query2")
     public String query2Submit(@ModelAttribute Department department, Model model) {
         // TODO query2 add attribute of array of doctors,if department name unmatch throw error
-        return "query2Result";
+    	List<Query2result> query2result = this.jdbcTemplate.query(
+    		"select firstName, lastName, doctor.officeNo as officeNo, buildingName from " + prefix + ".doctor, " + prefix + ".department where doctor.departmentId = department.departmentId and name = ?",
+    	   	new RowMapper<Query2result>() {   			
+				public Query2result mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Query2result rowResult = new Query2result();
+					rowResult.setFirstName(rs.getString("firstName"));
+					rowResult.setLastName(rs.getString("lastName"));
+					rowResult.setOfficeNo(rs.getInt("officeNo"));
+					rowResult.setBuildingName(rs.getString("buildingName"));
+	    			return rowResult;
+				}		
+    		}, department.getName());
+    	
+    	model.addAttribute("result", query2result);
+    	
+    	if(query2result.size() == 0)
+    		return "query2ResultNotFound";
+    	else
+    		return "query2Result";
     }
-
-
+    
+    @GetMapping("/query3")
+    public String query3Form(Model model) {
+    	List<Query3result> query3result = this.jdbcTemplate.query(
+    			"select patient.pid as pid, firstName, lastName, floor(expectedDischargeDate-sysdate) as remainDays, hospitalizedRoomNo, dueAmount from dual, " + prefix + ".patient, " + prefix + ".treatmentRecord, (select pid as ppid, sum(dueAmount) as dueAmount from " + prefix + ".cashiersData where paymentDate is null group by pid) where patient.pid = treatmentRecord.pid and initialHospitalizedDate < sysdate and floor(expectedDischargeDate-sysdate) > 5 and patient.pid = ppid",
+        	   	new RowMapper<Query3result>() {   			
+    				public Query3result mapRow(ResultSet rs, int rowNum) throws SQLException {
+    					Query3result rowResult = new Query3result();
+    					rowResult.setPid(rs.getInt("pid"));
+    					rowResult.setFirstName(rs.getString("firstName"));
+    					rowResult.setLastName(rs.getString("lastName"));
+    					rowResult.setRemainDays(rs.getInt("remainDays"));
+    					rowResult.setHospitalizedRoomNo(rs.getInt("hospitalizedRoomNo"));
+    					rowResult.setDueAmount(rs.getDouble("dueAmount"));
+    	    			return rowResult;
+    				}		
+        		});
+        	
+        	model.addAttribute("result", query3result);
+        	
+        	if(query3result.size() == 0)
+        		return "query3ResultNotFound";
+        	else
+        		return "query3Result";
+    }
 }
