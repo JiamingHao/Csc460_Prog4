@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Query4 Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Most frequently patient he accessed.</h1>
+<p th:text="'Pid: ' + ${result.pid}" />
+<p th:text="'Pname: ' + ${result.fullName}" />
+<p th:text="'Medicine Name: ' + ${result.medicineName}" />
+<a href="/index.html">Home</a>
+</body>
+</html>

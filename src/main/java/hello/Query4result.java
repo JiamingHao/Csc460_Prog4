@@ -28,6 +28,13 @@ public class Query4result {
 	private String lastName;
 	private String firstName;
 	private String medicineName;
+	private String fullName;
+
+    // Used to record exception info if necessary
+    private String errorMsg;
+    private String opreationName;
+
+    public Query4result(){ errorMsg = "No errors occurred.";};
 	
 	/*--------------------------------------------------------------
 	| Group of getter and setter methods
@@ -67,5 +74,10 @@ public class Query4result {
 	public void setMedicineName(String medicineName) {
 		this.medicineName = medicineName;
 	}
-	
+	public String getFullName() {return firstName + " " + lastName;}
+
+    public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+    public String getErrorMsg() {return errorMsg;}
+    public void setOpreationName(String opreationName){this.opreationName = opreationName;}
+
 }

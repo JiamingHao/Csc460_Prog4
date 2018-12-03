@@ -29,6 +29,13 @@ public class Query3result {
 	private int remainDays;
 	private int hospitalizedRoomNo;
 	private double dueAmount;
+	private String fullName;
+
+	// Used to record exception info if necessary
+	private String errorMsg;
+	private String opreationName;
+
+	public Query3result(){ errorMsg = "No errors occurred.";};
 	
 	/*--------------------------------------------------------------
 	| Group of getter and setter methods
@@ -80,4 +87,10 @@ public class Query3result {
 	public void setDueAmount(double dueAmount) {
 		this.dueAmount = dueAmount;
 	}
+	public String getFullName() {return firstName + " " + lastName;}
+
+	public void setErrorMsg(String errorMsg){this.errorMsg = errorMsg;}
+	public String getErrorMsg() {return errorMsg;}
+	public void setOpreationName(String opreationName){this.opreationName = opreationName;}
+
 }
