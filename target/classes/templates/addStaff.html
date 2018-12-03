@@ -13,7 +13,7 @@
         <p>Last Name: <input type="text" th:field="*{lastName}" required/></p>
         <p>Date of Birth: <input id="datePickerId" type="date" name="dob" th:field="*{date_of_birth}" required> </p>
         <p>Department ID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{departmentId}" required/></p>
-	<p>Office Number: <input type="number" name="officeNo" min="1" max"2" th:field="*{officeNo}"></p>
+	<p>Office Number: <input type="number" name="officeNo" min="1" max="300" th:field="*{officeNo}"></p>
         <p>Contact Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{contactNumber}" /></p>
         <p>Salary: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{salary}" /></p>
         <fieldset style="margin-left: -15px;">

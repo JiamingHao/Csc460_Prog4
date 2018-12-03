@@ -27,6 +27,10 @@ public class WebController {
   @Autowired
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
+    /*
+     * Prefix below is used to specify the table
+     * owner when writing queries. 
+    */
     private String prefix;
 
     @PostConstruct
@@ -445,7 +449,7 @@ public class WebController {
     			result.setFirstName(rs.getString("firstName"));
     			result.setLastName(rs.getString("lastName"));
     			result.setGender(rs.getString("gender"));
-    			result.setDate_of_birth(rs.getString("date_of_birth"));
+    			result.setDate_of_birth(rs.getString("date_of_birth").split(" ")[0]);
     			result.setVisitDate(rs.getString("visitDate"));
     			result.setVisitReason(rs.getString("visitReason"));
     			result.setTreatmentMethod(rs.getString("treatmentMethod"));
