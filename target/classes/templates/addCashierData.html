@@ -8,6 +8,7 @@
 <body>
     <h1>Add A Cashier Data Record</h1>
     <form action="#" th:action="@{/addCashierData}" th:object="${cashiersData}" method="post">
+        <p>AID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{aid}" required/></p>
         <p>PID: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{pid}" required/></p>
     	<p>Due Amount: <input type="number" step="0.01" th:field="*{dueAmount}" required/></p>
         <p>Due Date: <input id="datePickerId" type="date" th:field="*{dueDate}" required> </p>

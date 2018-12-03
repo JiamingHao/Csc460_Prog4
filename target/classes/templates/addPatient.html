@@ -13,7 +13,7 @@
         <p>Last Name: <input type="text" th:field="*{lastName}" required/></p>
         <p>Date of Birth: <input id="datePickerId" type="date" th:field="*{date_of_birth}" required> </p>
         <p>Address: <input type="text" th:field="*{address}" /></p>
-        <p>Contact Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" th:field="*{contactNumber}" /></p>
+        <p>Contact Number: <input type="text"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="12" th:field="*{contactNumber}" /></p>
         <fieldset style="margin-left: -15px;">
  			<legend>Gender</legend>
  			<input id="1" type="radio" name="gender" value="Male" th:field="*{gender}"> Male<br> 
