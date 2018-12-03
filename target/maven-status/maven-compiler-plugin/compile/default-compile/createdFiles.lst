@@ -1,8 +1,9 @@
-hello/Greeting.class
 hello/WebController.class
 hello/Doctor.class
 hello/Staff.class
 hello/GreetingController.class
 hello/Application.class
 hello/Patient.class
+hello/Greeting.class
+hello/Query2result.class
 hello/Nurse.class
