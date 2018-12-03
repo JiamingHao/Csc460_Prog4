@@ -1,21 +1,21 @@
 package hello;
 /*+-----------------------------------------------------------------
 ||
-||   Class Building	
+|| Class Building	
 ||
 ||	Author: Group members
 ||
 ||      Purpose: Receive and transfer the data provided by users
 ||               on html pages
 ||	Inherits From: None
-||      Interfaces: None
+||	Interfaces: None
 |+-------------------------------------------------------------------
 ||
-||      Constants: None
+||	Constants: None
 |+-------------------------------------------------------------------
-||      Constructors: public Building()
+||	Constructors: public Building()
 ||
-||      Class Methods: None
+||	Class Methods: None
 ||
 ||	Inst.Methods: Group of setter and getter methods
 ||
