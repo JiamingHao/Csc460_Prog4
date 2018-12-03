@@ -8,9 +8,13 @@
 <body>
 <h1>Result</h1>
 <table>
+    <tr>
+	<th>Name</th>
+	<th>Office Number</th>
+	<th>Building Name</th>
+    </tr>
     <tr th:each="oneResult : ${result}">
-    	<td th:text="${oneResult.firstName}"></td>
-    	<td th:text="${oneResult.lastName}"></td>
+	<td th:text="${oneResult.fullName}"></td>
     	<td th:text="${oneResult.officeNo}"></td>
     	<td th:text="${oneResult.buildingName}"></td>
     </tr>
