@@ -13,8 +13,13 @@
         <p>Enter new Initial Hospitalized Date: <input id="datePickerId" type="date" th:field="*{initialHospitalizedDate}"> </p>
         <p>Enter new Expected Discharge Date: <input id="datePickerId" type="date" th:field="*{expectedDischargeDate}"> </p>
         <p>Enter new Discharge Date: <input id="datePickerId" type="date" th:field="*{dischargeDate}"> </p>
-        <p>Enter new Hosptialized Room No: <input type="number" min="1" max="300" th:field="*{hospitalizedRoomNo}" required/></p>
-        <p>Enter new Treatment Method: <input type="text" th:field="*{treatmentMethod}"/></p>
+        <p>Enter new Hosptialized Room No: <input type="number" min="1" max="300" th:field="*{hospitalizedRoomNo}" /></p>
+        <fieldset style="margin-left: -15px;">
+ 			<legend>Update Treatment Method</legend>
+ 			<input id="1" type="radio" name="treatmentMethod" value="Surgical Therapy" th:field="*{treatmentMethod}"> Surgical Therapy<br> 
+ 			<input id="2" type="radio" name="treatmentMethod" value="Medical Therapy" th:field="*{treatmentMethod}"> Medical Therapy<br>
+ 			<input id="3" type="radio" name="treatmentMethod" value="Physical Therapy" th:field="*{treatmentMethod}"> Physical Therapy<br>
+ 	</fieldset>
         
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
