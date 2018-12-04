@@ -481,6 +481,7 @@ public class WebController {
     	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from " + prefix + ".patient inner join " + prefix + ".treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
     	new RowMapper<Query1result>() {
     		public Query1result mapRow(ResultSet rs, int rowNum) throws SQLException {
+    			// set one row data into one object
     			Query1result result = new Query1result();
     			result.setPid(rs.getInt("pid"));
     			result.setFirstName(rs.getString("firstName"));
@@ -515,11 +516,12 @@ public class WebController {
      */
     @PostMapping("/query2")
     public String query2Submit(@ModelAttribute Department department, Model model) {
-        // query2 add attribute of array of doctors,if department name unmatch throw error
+        // query2 add attribute of array of doctors,if department name unmatch return to error page
     	List<Query2result> query2result = this.jdbcTemplate.query(
     		"select firstName, lastName, doctor.officeNo as officeNo, buildingName from " + prefix + ".doctor, " + prefix + ".department where doctor.departmentId = department.departmentId and name = ?",
     	   	new RowMapper<Query2result>() {   			
 				public Query2result mapRow(ResultSet rs, int rowNum) throws SQLException {
+					// set one row data into one object
 					Query2result rowResult = new Query2result();
 					rowResult.setFirstName(rs.getString("firstName"));
 					rowResult.setLastName(rs.getString("lastName"));
@@ -547,6 +549,7 @@ public class WebController {
     			"select patient.pid as pid, firstName, lastName, floor(expectedDischargeDate-sysdate) as remainDays, hospitalizedRoomNo, dueAmount from dual, " + prefix + ".patient, " + prefix + ".treatmentRecord, (select pid as ppid, sum(dueAmount) as dueAmount from " + prefix + ".cashiersData where paymentDate is null group by pid) where patient.pid = treatmentRecord.pid and initialHospitalizedDate < sysdate and floor(expectedDischargeDate-sysdate) > 5 and patient.pid = ppid",
         	   	new RowMapper<Query3result>() {   			
     				public Query3result mapRow(ResultSet rs, int rowNum) throws SQLException {
+    					// set one row data into one object
     					Query3result rowResult = new Query3result();
     					rowResult.setPid(rs.getInt("pid"));
     					rowResult.setFirstName(rs.getString("firstName"));
@@ -566,10 +569,11 @@ public class WebController {
         		return "query3Result";
     }
     
-    // give the name and DOB of a receptionist, search for the most frequently patient he accessed, display the pid, full name, and the medicine name that the patient most frequently bought.
-    // required: staff's firstName, lastName, date_of_birst
-    // return: pid , firstName, lastName, medicineName
-    // select patient.pid as pid, firstName, lastName, medicineName from dmcccccc.patient, dmcccccc.pharmacistsData, (select pid as ppid from dmcccccc.receptionistsData, dmcccccc.staff where firstName = ? and lastName = ? and data_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc;
+    /*
+     * give the name and DOB of a receptionist, search for the most frequently patient he accessed, display the pid, full name, and the medicine name that the patient most frequently bought.
+     * required: staff's firstName, lastName, date_of_birst
+     * return: pid , firstName, lastName, medicineName
+     */
     
     @GetMapping("/query4")
     public String query4Form(Model model) {
@@ -580,9 +584,10 @@ public class WebController {
     @PostMapping("/query4")
     public String query4Submit(@ModelAttribute Staff staff, Model model) {
     	List<Query4result> query4result = this.jdbcTemplate.query(
-    		"select patient.pid as pid, firstName, lastName, medicineName from " + prefix + ".patient, " + prefix + ".pharmacistsData, (select pid as ppid from " + prefix + ".receptionistsData, " + prefix + ".staff where firstName = ? and lastName = ? and date_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc",
+    		"select patient.pid as pid, firstName, lastName, medicineName from " + prefix + ".patient, " + prefix + ".pharmacistsData, (select pid as ppid from " + prefix + ".receptionistsData, " + prefix + ".staff where firstName = ? and lastName = ? and date_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and jobTitle = 'Receptionist' and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc",
     	   	new RowMapper<Query4result>() {   			
 				public Query4result mapRow(ResultSet rs, int rowNum) throws SQLException {
+					// set one row data into one object
 					Query4result rowResult = new Query4result();
 					rowResult.setPid(rs.getInt("pid"));
 					rowResult.setFirstName(rs.getString("firstName"));
