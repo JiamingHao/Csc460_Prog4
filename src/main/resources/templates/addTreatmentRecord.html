@@ -16,7 +16,7 @@
         <p>Initial Hosptialized Date: <input id="datePickerId" type="date" th:field="*{initialHospitalizedDate}"> </p>
         <p>Expected Discharge Date: <input id="datePickerId" type="date" th:field="*{expectedDischargeDate}"> </p>
         <p>Discharge Date: <input id="datePickerId" type="date" th:field="*{dischargeDate}"> </p>
-        <p>Hosptialized Room No: <input type="number"  min="1" max="300"  th:field="*{hospitalizedRoomNo}"/></p>
+        <p>Hosptialized Room No: <input type="number"  min="0" max="300"  th:field="*{hospitalizedRoomNo}"/></p>
         <fieldset style="margin-left: -15px;">
  			<legend>Treatment Method</legend>
  			<input id="1" type="radio" name="treatmentMethod" value="Surgical Therapy" th:field="*{treatmentMethod}"> Surgical Therapy<br> 
