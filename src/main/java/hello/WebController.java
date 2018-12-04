@@ -477,7 +477,7 @@ public class WebController {
     @PostMapping("/query1")
     public String query1Submit(@ModelAttribute Patient patient, Model model) {
     	List<Query1result> query1result = this.jdbcTemplate.query(
-    	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from dmcccccc.patient inner join dmcccccc.treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
+    	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from " + prefix + ".patient inner join " + prefix + ".treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
     	new RowMapper<Query1result>() {
     		public Query1result mapRow(ResultSet rs, int rowNum) throws SQLException {
     			Query1result result = new Query1result();
@@ -516,7 +516,7 @@ public class WebController {
     public String query2Submit(@ModelAttribute Department department, Model model) {
         // query2 add attribute of array of doctors,if department name unmatch throw error
     	List<Query2result> query2result = this.jdbcTemplate.query(
-    		"select firstName, lastName, doctor.officeNo as officeNo, buildingName from dmcccccc.doctor, dmcccccc.department where doctor.departmentId = department.departmentId and name = ?",
+    		"select firstName, lastName, doctor.officeNo as officeNo, buildingName from " + prefix + ".doctor, " + prefix + ".department where doctor.departmentId = department.departmentId and name = ?",
     	   	new RowMapper<Query2result>() {   			
 				public Query2result mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Query2result rowResult = new Query2result();
