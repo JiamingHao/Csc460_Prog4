@@ -80,14 +80,15 @@ public class WebController {
 	try{
         jdbcTemplate.update("insert into " + prefix + ".patient (pid, lastName, firstName, gender, date_of_birth, address, contactNumber) values (?, ?, ?, ?, to_date(?,'YYYY-MM-DD'), ?, ?)", patient.getPid(), patient.getLastName(), patient.getFirstName(), patient.getGender(), patient.getDate_of_birth(), patient.getAddress(), patient.getContactNumber());
 	} catch (RuntimeException e)
-	{	
+	{
+        return "duplicated";
 		/*
 		* Pass the error message to the attribute
 		* object as record.
 		*/
-		patient.setErrorMsg(e.getMessage());
+		//patient.setErrorMsg(e.getMessage());
 		// Record the opreation name casuing the exception
-		patient.setOpreationName("addPatient");
+		//patient.setOpreationName("addPatient");
 	}
 
         return "resultPatient";
@@ -146,11 +147,12 @@ public class WebController {
     public String doctorSubmit(@ModelAttribute Doctor doctor) {
 	try{
         jdbcTemplate.update("insert into " + prefix + ".doctor values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?)", doctor.getDid(), doctor.getLastName(), doctor.getFirstName(), doctor.getDate_of_birth(), doctor.getStatus(), doctor.getDepartmentId(), doctor.getOfficeNo());
-	} catch (RuntimeException e)
-	{	
-		doctor.setErrorMsg(e.getMessage());
-		doctor.setOpreationName("addDoctor");
-	}
+	} catch (RuntimeException e) {
+        return "duplicated";
+        //doctor.setErrorMsg(e.getMessage());
+        //doctor.setOpreationName("addDoctor");
+    }
+
     return "resultDoctor";
     }
 
@@ -166,7 +168,7 @@ public class WebController {
 	try{
         jdbcTemplate.update("delete from " + prefix + ".doctor where did = ?", doctor.getDid());
 	} catch (RuntimeException e)
-	{	
+	{
 		doctor.setErrorMsg(e.getMessage());
 		doctor.setOpreationName("deleteDoctor");
 	}
@@ -206,9 +208,10 @@ public class WebController {
 	try{
         jdbcTemplate.update("insert into " + prefix + ".nurse values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?)", nurse.getNid(), nurse.getLastName(), nurse.getFirstName(), nurse.getDate_of_birth(), nurse.getDepartmentId(), nurse.getRoomNo());
 	} catch (RuntimeException e)
-	{	
-		nurse.setErrorMsg(e.getMessage());
-		nurse.setOpreationName("addNurse");
+	{
+        return "duplicated";
+		//nurse.setErrorMsg(e.getMessage());
+		//nurse.setOpreationName("addNurse");
 	}
     return "resultNurse";
     }
@@ -225,7 +228,7 @@ public class WebController {
 	try{
         jdbcTemplate.update("delete from " + prefix + ".nurse where nid = ?", nurse.getNid());
 	} catch (RuntimeException e)
-	{	
+	{
 		nurse.setErrorMsg(e.getMessage());
 		nurse.setOpreationName("deleteNurse");
 	}
@@ -263,9 +266,10 @@ public class WebController {
 	try{
         jdbcTemplate.update("insert into " + prefix + ".staff values (?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?,?,?,?)", staff.getEid(), staff.getLastName(), staff.getFirstName(), staff.getDate_of_birth(), staff.getDepartmentId(), staff.getOfficeNo(), staff.getSalary(), staff.getJobTitle(), staff.getGender(), staff.getContactNumber());
 	} catch (RuntimeException e)
-	{	
-		staff.setErrorMsg(e.getMessage());
-		staff.setOpreationName("addStaff");
+	{
+        return "duplicated";
+		//staff.setErrorMsg(e.getMessage());
+		//staff.setOpreationName("addStaff");
 	}
     return "resultStaff";
     }
@@ -320,9 +324,10 @@ public class WebController {
 	try{
         jdbcTemplate.update("insert into " + prefix + ".pharmacist values (?,?,?,?,to_date(?,'YYYY-MM-DD'),?)", pharmacist.getPharmacist_id(), pharmacist.getDepartmentId(), pharmacist.getLastName(), pharmacist.getFirstName(), pharmacist.getDate_of_birth(), pharmacist.getOfficeNo());
 	} catch (RuntimeException e)
-	{	
-		pharmacist.setErrorMsg(e.getMessage());
-		pharmacist.setOpreationName("addPharmacist");
+	{
+        return "duplicated";
+		//pharmacist.setErrorMsg(e.getMessage());
+		//pharmacist.setOpreationName("addPharmacist");
 	}
     return "resultPharmacist";
     }
@@ -377,9 +382,10 @@ public class WebController {
 	try{
     	jdbcTemplate.update("insert into " + prefix + ".treatmentRecord values (?,?,?,to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),to_date(?,'YYYY-MM-DD'),?,?,?)", treatmentRecord.getAid(), treatmentRecord.getPid(), treatmentRecord.getVisitReason(), treatmentRecord.getVisitDate(), treatmentRecord.getInitialHospitalizedDate(), treatmentRecord.getExpectedDischargeDate(), treatmentRecord.getDischargeDate(), treatmentRecord.getHospitalizedRoomNo(), treatmentRecord.getTreatmentMethod(), treatmentRecord.getDid());
 	} catch (RuntimeException e)
-	{	
-		treatmentRecord.setErrorMsg(e.getMessage());
-		treatmentRecord.setOpreationName("addTreatmentRecord");
+	{
+        return "duplicated";
+		//treatmentRecord.setErrorMsg(e.getMessage());
+		//treatmentRecord.setOpreationName("addTreatmentRecord");
 	}
  	return "resultTreatmentRecord";
     }
@@ -415,9 +421,10 @@ public class WebController {
 	try{
     	jdbcTemplate.update("insert into " + prefix + ".cashiersData values (?,?,?,to_date(?,'YYYY-MM-DD'),?,to_date(?,'YYYY-MM-DD'),?)", cashiersData.getAid(), cashiersData.getPid(), cashiersData.getDueAmount(), cashiersData.getDueDate(), cashiersData.getStatus(), cashiersData.getPaymentDate(), cashiersData.getEid());
 	} catch (RuntimeException e)
-	{	
-		cashiersData.setErrorMsg(e.getMessage());
-		cashiersData.setOpreationName("addCashierData");
+	{
+        return "duplicated";
+		//cashiersData.setErrorMsg(e.getMessage());
+		//cashiersData.setOpreationName("addCashierData");
 	}
  	return "addCashierDataResult";
     }
