@@ -484,7 +484,7 @@ public class WebController {
     @PostMapping("/query1")
     public String query1Submit(@ModelAttribute Patient patient, Model model) {
     	List<Query1result> query1result = this.jdbcTemplate.query(
-    	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from dmcccccc.patient inner join dmcccccc.treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
+    	"select patient.pid as pid, firstName, lastName, gender, date_of_birth, visitDate, visitReason, treatmentMethod, did from " + prefix + ".patient inner join " + prefix + ".treatmentRecord on patient.pid = treatmentRecord.pid and firstName = ? and lastName = ? and date_of_birth = (to_date(?,'YYYY-MM-DD')) and rownum = 1 order by visitDate desc",
     	new RowMapper<Query1result>() {
     		public Query1result mapRow(ResultSet rs, int rowNum) throws SQLException {
     			Query1result result = new Query1result();
@@ -539,7 +539,7 @@ public class WebController {
     	
     	if(query2result.size() == 0)
     		return "query2ResultNotFound";
-    	else
+    	else	
     		return "query2Result";
     }
     /*
@@ -586,7 +586,7 @@ public class WebController {
     @PostMapping("/query4")
     public String query4Submit(@ModelAttribute Staff staff, Model model) {
     	List<Query4result> query4result = this.jdbcTemplate.query(
-    		"select patient.pid as pid, firstName, lastName, medicineName from " + prefix + ".patient, " + prefix + ".pharmacistsData, (select pid as ppid from " + prefix + ".receptionistsData, " + prefix + ".staff where firstName = ? and lastName = ? and data_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc",
+    		"select patient.pid as pid, firstName, lastName, medicineName from " + prefix + ".patient, " + prefix + ".pharmacistsData, (select pid as ppid from " + prefix + ".receptionistsData, " + prefix + ".staff where firstName = ? and lastName = ? and date_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc",
     	   	new RowMapper<Query4result>() {   			
 				public Query4result mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Query4result rowResult = new Query4result();
