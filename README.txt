@@ -16,6 +16,6 @@ Workload Distribution
 Jiaming Hao: Write 90% of the front-end html pages and more than
 half of the Java classes, finish the exception handling.
 
-Siyi Jiang:
+Siyi Jiang: Contribute for all queries writing and testing. Also check the connection and performance on server side.
 
 Mingcheng Dai: Creat Tables, 20% Java classes, 10% html pages
