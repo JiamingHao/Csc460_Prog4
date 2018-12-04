@@ -516,7 +516,7 @@ public class WebController {
     public String query2Submit(@ModelAttribute Department department, Model model) {
         // query2 add attribute of array of doctors,if department name unmatch throw error
     	List<Query2result> query2result = this.jdbcTemplate.query(
-    		"select firstName, lastName, doctor.officeNo as officeNo, buildingName from " + prefix + ".doctor, " + prefix + ".department where doctor.departmentId = department.departmentId and name = ?",
+    		"select firstName, lastName, doctor.officeNo as officeNo, buildingName from dmcccccc.doctor, dmcccccc.department where doctor.departmentId = department.departmentId and name = ?",
     	   	new RowMapper<Query2result>() {   			
 				public Query2result mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Query2result rowResult = new Query2result();
@@ -532,7 +532,7 @@ public class WebController {
     	
     	if(query2result.size() == 0)
     		return "query2ResultNotFound";
-    	else
+    	else	
     		return "query2Result";
     }
     /*
@@ -579,7 +579,7 @@ public class WebController {
     @PostMapping("/query4")
     public String query4Submit(@ModelAttribute Staff staff, Model model) {
     	List<Query4result> query4result = this.jdbcTemplate.query(
-    		"select patient.pid as pid, firstName, lastName, medicineName from " + prefix + ".patient, " + prefix + ".pharmacistsData, (select pid as ppid from " + prefix + ".receptionistsData, " + prefix + ".staff where firstName = ? and lastName = ? and data_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc",
+    		"select patient.pid as pid, firstName, lastName, medicineName from " + prefix + ".patient, " + prefix + ".pharmacistsData, (select pid as ppid from " + prefix + ".receptionistsData, " + prefix + ".staff where firstName = ? and lastName = ? and date_of_birth = to_date(?, 'yyyy-mm-dd') and staff.eid = receptionistsData.eid and rownum = 1 group by pid order by count(aid) desc) where patient.pid = ppid and patient.pid = pharmacistsData.pid and rownum = 1 group by medicineName, patient.pid, firstName, lastName order by count(pharmacistId) desc",
     	   	new RowMapper<Query4result>() {   			
 				public Query4result mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Query4result rowResult = new Query4result();
