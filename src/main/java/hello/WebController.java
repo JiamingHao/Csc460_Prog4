@@ -456,7 +456,7 @@ public class WebController {
     @PostMapping("/updateDepartment")
     public String updateDepartmentSubmit(@ModelAttribute Department  department) {
 	try{
-    	jdbcTemplate.update("update " + prefix + ".department set name = ?, buildingName = ?, officeNo = ? where departmentId = ", department.getName(), department.getBuildingName(), department.getOfficeNo(), department.getDepartmentId());
+    	jdbcTemplate.update("update " + prefix + ".department set name = ?, buildingName = ?, officeNo = ? where departmentId = ?", department.getName(), department.getBuildingName(), department.getOfficeNo(), department.getDepartmentId());
 	} catch (RuntimeException e)
 	{	
 		department.setErrorMsg(e.getMessage());
