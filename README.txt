@@ -18,4 +18,4 @@ half of the Java classes, finish the exception handling.
 
 Siyi Jiang: Contribute for all queries writing and testing. Also check the connection and performance on server side.
 
-Mingcheng Dai: Creat Tables, 20% Java classes, 10% html pages
+Mingcheng Dai: Creat Tables, 20% Java classes, 10% html pages, doc and readme writting.
